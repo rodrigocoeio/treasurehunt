@@ -1,10 +1,12 @@
 <template>
     <div>
-        Board Game
+        
     </div>
 </template>
 
 <script>
+    import Phaser from "phaser";
+
     export default 
     {
         mounted: () => 

@@ -4,6 +4,9 @@ Vue.js
 using vue.js for frontend purpose:
 https://vuejs.org/
 
+Vite
+https://vitejs.dev/
+
 Pinia
 using Pinia for data storage purpose:
 https://pinia.vuejs.org/
@@ -11,6 +14,9 @@ https://pinia.vuejs.org/
 Phaser
 using Phaser for gaming displaying purpose:
 [Phaser - A fast, fun and free open source HTML5 game framework](https://phaser.io/)
+
+Phaser 3 Examples
+https://codeload.github.com/photonstorm/phaser3-examples/zip/refs/heads/master
 
 App Jira Software:
 https://skyshi.atlassian.net/jira/software/projects/ES/boards/6
@@ -20,6 +26,12 @@ https://skyshi.atlassian.net/l/cp/H1ece5UN
 
 App Repository:
 https://bitbucket.org/rodrigocoeio/treasurehunt/src/main/
+
+
+
+# Rodar modo Development
+cd TreasureHunt
+npm run dev
 
 
 
