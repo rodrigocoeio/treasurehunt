@@ -62,3 +62,10 @@ Vamos utilizar um pacote/biblioteca Node.js chamado Phaser, para isso precisamos
     node index.js         - Roda arquivo local
 
 - NPM - Gerenciador de pacotes do Node.js
+
+
+
+- Comandos uteis GIT
+    git status - checar quais arquivos foram modificados
+    git add - adicionar arquivos a serem enviados para repositorio
+    git reset --hard - restora para ultima versão baixada
