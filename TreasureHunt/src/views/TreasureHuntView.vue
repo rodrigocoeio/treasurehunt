@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h1>Treasure Hunt</h1>
         <GameDice></GameDice>
         <GameBoard>
             <!-- <GamePawn v-for="player in players"></GamePawn>

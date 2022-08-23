@@ -1,6 +1,7 @@
 <template>
     <div>
-
+        <h1>Phaser 3 Example</h1>
+        <div id="game-canvas"></div>
     </div>
 </template>
 
@@ -24,6 +25,7 @@
     const GameStart = () => {
         var config = {
             type: Phaser.AUTO,
+            parent: "game-canvas",
             width: 800,
             height: 600,
             physics: {

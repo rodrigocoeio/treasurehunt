@@ -31,6 +31,7 @@ https://bitbucket.org/rodrigocoeio/treasurehunt/src/main/
 
 # Rodar modo Development
 cd TreasureHunt
+npm install
 npm run dev
 
 
