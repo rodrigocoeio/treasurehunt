@@ -1,15 +1,29 @@
 <template>
     <div>
-        
+        <GameDice></GameDice>
+        <GameBoard>
+            <!-- <GamePawn v-for="player in players"></GamePawn>
+
+            <GameTile v-for="i in 7"></GameTile>
+            <GameTile v-for="i in 7"></GameTile>
+            <GameTile v-for="i in 7"></GameTile>
+            <GameTile v-for="i in 7"></GameTile>
+            <GameTile v-for="i in 7"></GameTile> -->
+        </GameBoard>
     </div>
 </template>
 
 <script>
     import Phaser from "phaser";
+    import GameBoard from "../components/Board.vue";
 
     export default {
         mounted: () => {
-            GameStart();
+            //GameStart();
+        },
+
+        components: {
+            GameBoard
         }
     }
 
