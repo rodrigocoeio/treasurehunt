@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="game-board">
         
     </div>
 </template>
@@ -15,3 +15,12 @@
         }
     }
 </script>
+
+<style scoped>
+    .game-board {
+        width: 100%;
+        height: 100%;
+        border: 1px solid;
+        border-style: dashed;
+    }
+</style>

@@ -1,40 +1,64 @@
-# Treasure Hunt Game
+-=======================================================-
+            TREASURE HUNT - GAME BOARD
+-=======================================================-
+---------------------------------------------------------
+INSTRUCTIONS
+----------------------------------------------------------
+# RUN DEVELOPMENT MODE
+cd TreasureHunt
+npm install
+npm run dev
+open http://localhost:port
 
+# CHANGE HTTP HOST / PORT
+edit config in this file: ./TreasureHunt/vite.config.js
+
+
+---------------------------------------------------------
+USED LIBRARIES
+---------------------------------------------------------
 Vue.js
-using vue.js for frontend purpose:
 https://vuejs.org/
+used vue.js for frontend purpose
+
+Vue.js Mastery
+https://www.vuemastery.com/
 
 Vite
 https://vitejs.dev/
+used for dev tooling
 
 Pinia
-using Pinia for data storage purpose:
 https://pinia.vuejs.org/
+used Pinia for data storage purpose
 
 Phaser
-using Phaser for gaming displaying purpose:
-[Phaser - A fast, fun and free open source HTML5 game framework](https://phaser.io/)
+https://phaser.io/
+used Phaser for gaming displaying purpose
+[Phaser - A fast, fun and free open source HTML5 game framework]
 
 Phaser 3 Examples
 https://codeload.github.com/photonstorm/phaser3-examples/zip/refs/heads/master
 
-App Jira Software:
-https://skyshi.atlassian.net/jira/software/projects/ES/boards/6
 
-App Documentation:
+---------------------------------------------------------
+DOCUMENTATION / BOARD / REPOSITORY
+----------------------------------------------------------
+
+Documentation:
 https://skyshi.atlassian.net/l/cp/H1ece5UN
 
-App Repository:
+Jira Board:
+https://skyshi.atlassian.net/jira/software/projects/ES/boards/6
+
+Repository:
 https://bitbucket.org/rodrigocoeio/treasurehunt/src/main/
 
 
 
-# Rodar modo Development
-cd TreasureHunt
-npm install
-npm run dev
-
-
+---------------------------------------------------------
+NOTAS DE DESENVOLVIMENTO
+----------------------------------------------------------
 
 Objetivo:
 Entregar ao teacher um board game estilo Treasure Hunter
