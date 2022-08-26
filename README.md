@@ -94,3 +94,26 @@ Vamos utilizar um pacote/biblioteca Node.js chamado Phaser, para isso precisamos
     git status - checar quais arquivos foram modificados
     git add - adicionar arquivos a serem enviados para repositorio
     git reset --hard - restora para ultima versão baixada
+
+
+-------------------------------------------------------------------------
+ESTRUTURA COMPONENT VUE.js
+-------------------------------------------------------------------------
+{
+    data:   armazenamento de variaveis/propriedades
+    mounted:   função chamada quando componente é inicializado
+    methods:   objeto contento methodos/ações desse componente
+    components:  objeto contento lista de componentes dependentes
+}
+
+-------------------------------------------------------------------------
+VUE.JS HTML atributos
+-------------------------------------------------------------------------
+@click=""  -  on click call an method
+
+
+
+-------------------------------------------------------------------------
+ANOTAÇÕES ESTUDO RANGEL
+-------------------------------------------------------------------------
+switch - logica de programação
