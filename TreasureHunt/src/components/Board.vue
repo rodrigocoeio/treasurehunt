@@ -1,17 +1,26 @@
 <template>
     <div class="game-board">
-        
+        <GameTile v-for="i in 7"></GameTile>
+        <GameTile v-for="i in 7"></GameTile>
+        <GameTile v-for="i in 7"></GameTile>
+        <GameTile v-for="i in 7"></GameTile>
+        <GameTile v-for="i in 7"></GameTile>
     </div>
 </template>
 
 <script>
-    import Phaser from "phaser";
+    import GameTile from "../components/Tile.vue";
 
     export default 
     {
         mounted: () => 
         {
             console.log('board game inited');
+        },
+
+        components: 
+        {
+            GameTile
         }
     }
 </script>

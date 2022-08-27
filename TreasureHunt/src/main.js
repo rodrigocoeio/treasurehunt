@@ -8,6 +8,8 @@ import "./assets/main.css";
 
 import "./scripts.js";
 
+import Phaser from "phaser";
+
 const app = createApp(App);
 
 app.use(createPinia());
