@@ -1,7 +1,8 @@
--=======================================================-
-        ===============================================-
----------    TREASURE HUNT - GAME BOARD
--========------------------------------------------------
+-======================================================-
+            TREASURE HUNT - READ-ME
+-======================================================-
+
+----------------------------------------------------------
 INSTRUCTIONS
 ----------------------------------------------------------
 # RUN DEVELOPMENT MODE
@@ -117,3 +118,33 @@ VUE.JS HTML atributos
 ANOTAÇÕES ESTUDO RANGEL
 -------------------------------------------------------------------------
 switch - logica de programação
+
+
+
+
+-------------------------------------------------------------------------
+BACKLOG INICIAL
+-------------------------------------------------------------------------
+Estudar / Decidir melhor linguagem/biblioteca de desenvolvimento
+
+Criar Arquitetura
+Criar DDD
+Criar tabuleiro
+Criar peões ( players )
+	Criar movimento
+Criar dado
+Criar turnos
+Criar regras de cada casa
+	2 casas pra frente
+	2 casas pra trás
+	restart
+	chalenge?
+Criar eventos
+	start game
+	end game
+	next turn
+	jump 2
+	jump back 2
+	restart
+Criar audios para cada evento
+Criar artes
