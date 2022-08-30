@@ -4,6 +4,7 @@
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/treasurehunt">Treasure Hunt</RouterLink>
+        <RouterLink to="/monstergame">Monster Game</RouterLink>
         <RouterLink to="/phaserexamples">Phaser Examples</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>

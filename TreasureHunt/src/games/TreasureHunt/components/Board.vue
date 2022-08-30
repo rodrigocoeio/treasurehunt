@@ -15,7 +15,7 @@
     {
         mounted: () => 
         {
-            console.log('board game inited');
+            
         },
 
         components: 

@@ -27,6 +27,11 @@ const router = createRouter({
       name: "treasurehunt",
       component: () => import("../views/TreasureHuntView.vue"),
     },
+    {
+      path: "/monstergame",
+      name: "monstergame",
+      component: () => import("../views/MonsterGameView.vue"),
+    },
   ],
 });
 

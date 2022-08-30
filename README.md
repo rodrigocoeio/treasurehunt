@@ -41,6 +41,18 @@ used Phaser for gaming displaying purpose
 Phaser 3 Examples
 https://codeload.github.com/photonstorm/phaser3-examples/zip/refs/heads/master
 
+---------------------------------------------------------
+OTHER TOOLS / DOCUMENTATIONS
+----------------------------------------------------------
+Texture Packer Documentation
+https://www.codeandweb.com/texturepacker/documentation
+
+Sprite Sheets Phaser 3 Tutorial
+https://www.codeandweb.com/texturepacker/tutorials/how-to-create-sprite-sheets-for-phaser3?utm_source=ad&utm_medium=banner&utm_campaign=phaser-2018-10-16
+
+Tools for Game Developers
+https://www.codeandweb.com/
+
 
 ---------------------------------------------------------
 DOCUMENTATION / BOARD / REPOSITORY
