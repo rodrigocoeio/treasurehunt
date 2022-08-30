@@ -7,7 +7,7 @@ export default (configs, GameComponent) => {
         physics: {
             default: 'arcade',
             arcade: {
-                gravity: { y: 200 }
+                //gravity: { y: 200 }
             }
         },
         scene: {
@@ -16,6 +16,9 @@ export default (configs, GameComponent) => {
             },
             create: function create(){
                 GameComponent.create(this);
+            },
+            update: function update(){
+                GameComponent.update(this);
             }
         },
         ... configs

@@ -1,12 +1,12 @@
 <template>
     <div>
         <h1>Phaser 3 Examples</h1>
-        <h2>{{ game }}</h2>
         <nav>
             <select v-model="game">
                 <option value="first-game">First Game</option>
                 <option value="breakout">Breakout</option>
                 <option value="flood-fill">Flood Fill</option>
+                <option value="yahtzee">Yahtzee ( Dice )</option>
                 <option value="my-example">My Example</option>
             </select>
         </nav>
@@ -20,6 +20,7 @@ var Game = false;
 import FirstGame from "../phaser-examples/first-game.js";
 import Breakout from "../phaser-examples/breakout.js";
 import FloodFill from "../phaser-examples/flood-fill.js";
+import Yahtzee from "../phaser-examples/yahtzee.js";
 import MyExample from "../phaser-examples/my-example.js";
 
 export default {
@@ -43,6 +44,9 @@ export default {
                     break;
                 case 'flood-fill':
                     Game = FloodFill();
+                    break;
+                case 'yahtzee':
+                    Game = Yahtzee();
                     break;
                 case 'my-example':
                     Game = MyExample();

@@ -12,18 +12,18 @@ GameMixins.push({
     },
 
     mounted() {
-        // starts the game with given configurations
         this.Game = Game(this.game_configs, this);
     },
 
     beforeUnmount() {
-        this.close_game();
+        this.quit_game();
     },
 
     methods: {
         preload(){},
         create(){},
-        close_game() {
+        update(){},
+        quit_game() {
             if(this.Game)
             {
                 this.Game.destroy(true);

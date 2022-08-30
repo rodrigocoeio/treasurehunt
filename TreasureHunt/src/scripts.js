@@ -1,3 +1,3 @@
-const dd = (out) => {
+window.dd = (out) => {
     console.log(out);
 }
