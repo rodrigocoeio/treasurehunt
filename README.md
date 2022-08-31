@@ -12,6 +12,20 @@ INSTRUCTIONS
 4) npm run dev
 5) open http://localhost:port
 
+# HOW TO LOGIN GIT BITBUCKET
+1) Open and copy your Username from this URL: 
+https://bitbucket.org/account/settings/
+
+2) Open and click "create app password" 
+https://bitbucket.org/account/settings/app-passwords/
+
+- Label: git
+- Select all permissions
+- Click "Create" buttom
+- Copy the password
+
+3) Use your Username and password to log in. 
+
 # CHANGE HTTP HOST / PORT
 edit config in this file: ./TreasureHunt/vite.config.js
 
