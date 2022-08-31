@@ -6,10 +6,11 @@
 INSTRUCTIONS
 ----------------------------------------------------------
 # RUN DEVELOPMENT MODE
-cd TreasureHunt
-npm install
-npm run dev
-open http://localhost:port
+1) open terminal
+2) cd TreasureHunt
+3) npm install
+4) npm run dev
+5) open http://localhost:port
 
 # CHANGE HTTP HOST / PORT
 edit config in this file: ./TreasureHunt/vite.config.js
