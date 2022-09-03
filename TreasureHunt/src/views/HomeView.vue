@@ -1,7 +1,7 @@
 <template>
   <main>
     <h1>Welcome to our game platform!</h1>
-    testest
+    Rodrigo
   </main>
 </template>
 
