@@ -2,8 +2,22 @@
             TREASURE HUNT - READ-ME
 -======================================================-
 
+---------------------------------------------------------
+DOCUMENTATION / BOARD / REPOSITORY
 ----------------------------------------------------------
-INSTRUCTIONS
+
+Documentation ( Confluence ):
+https://skyshi.atlassian.net/l/cp/H1ece5UN
+
+Board ( Jira ):
+https://skyshi.atlassian.net/jira/software/projects/ES/boards/6
+
+Repository ( BitBucket ):
+https://bitbucket.org/rodrigocoeio/treasurehunt/src/main/
+
+
+----------------------------------------------------------
+DEV INSTRUCTIONS
 ----------------------------------------------------------
 # RUN DEVELOPMENT MODE
 1) open terminal
@@ -37,9 +51,6 @@ Vue.js
 https://vuejs.org/
 used vue.js for frontend purpose
 
-Vue.js Mastery
-https://www.vuemastery.com/
-
 Vite
 https://vitejs.dev/
 used for dev tooling
@@ -56,9 +67,13 @@ used Phaser for gaming displaying purpose
 Phaser 3 Examples
 https://codeload.github.com/photonstorm/phaser3-examples/zip/refs/heads/master
 
+
 ---------------------------------------------------------
 OTHER TOOLS / DOCUMENTATIONS
 ----------------------------------------------------------
+Vue.js Mastery - Vue.js Course Web Site
+https://www.vuemastery.com/
+
 Texture Packer Documentation
 https://www.codeandweb.com/texturepacker/documentation
 
@@ -67,20 +82,6 @@ https://www.codeandweb.com/texturepacker/tutorials/how-to-create-sprite-sheets-f
 
 Tools for Game Developers
 https://www.codeandweb.com/
-
-
----------------------------------------------------------
-DOCUMENTATION / BOARD / REPOSITORY
-----------------------------------------------------------
-
-Documentation:
-https://skyshi.atlassian.net/l/cp/H1ece5UN
-
-Jira Board:
-https://skyshi.atlassian.net/jira/software/projects/ES/boards/6
-
-Repository:
-https://bitbucket.org/rodrigocoeio/treasurehunt/src/main/
 
 
 
