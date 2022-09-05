@@ -2,14 +2,43 @@
             TREASURE HUNT - READ-ME
 -======================================================-
 
+---------------------------------------------------------
+DOCUMENTATION / BOARD / REPOSITORY
 ----------------------------------------------------------
-INSTRUCTIONS
+
+Documentation ( Confluence ):
+https://skyshi.atlassian.net/l/cp/H1ece5UN
+
+Board ( Jira ):
+https://skyshi.atlassian.net/jira/software/projects/ES/boards/6
+
+Repository ( BitBucket ):
+https://bitbucket.org/rodrigocoeio/treasurehunt/src/main/
+
+
+----------------------------------------------------------
+DEV INSTRUCTIONS
 ----------------------------------------------------------
 # RUN DEVELOPMENT MODE
-cd TreasureHunt
-npm install
-npm run dev
-open http://localhost:port
+1) open terminal
+2) cd TreasureHunt
+3) npm install
+4) npm run dev
+5) open http://localhost:port
+
+# HOW TO LOGIN GIT BITBUCKET
+1) Open and copy your Username from this URL: 
+https://bitbucket.org/account/settings/
+
+2) Open and click "create app password" 
+https://bitbucket.org/account/settings/app-passwords/
+
+- Label: git
+- Select all permissions
+- Click "Create" buttom
+- Copy the password
+
+3) Use your Username and password to log in. 
 
 # CHANGE HTTP HOST / PORT
 edit config in this file: ./TreasureHunt/vite.config.js
@@ -21,9 +50,6 @@ USED LIBRARIES
 Vue.js
 https://vuejs.org/
 used vue.js for frontend purpose
-
-Vue.js Mastery
-https://www.vuemastery.com/
 
 Vite
 https://vitejs.dev/
@@ -41,9 +67,13 @@ used Phaser for gaming displaying purpose
 Phaser 3 Examples
 https://codeload.github.com/photonstorm/phaser3-examples/zip/refs/heads/master
 
+
 ---------------------------------------------------------
 OTHER TOOLS / DOCUMENTATIONS
 ----------------------------------------------------------
+Vue.js Mastery - Vue.js Course Web Site
+https://www.vuemastery.com/
+
 Texture Packer Documentation
 https://www.codeandweb.com/texturepacker/documentation
 
@@ -52,20 +82,6 @@ https://www.codeandweb.com/texturepacker/tutorials/how-to-create-sprite-sheets-f
 
 Tools for Game Developers
 https://www.codeandweb.com/
-
-
----------------------------------------------------------
-DOCUMENTATION / BOARD / REPOSITORY
-----------------------------------------------------------
-
-Documentation:
-https://skyshi.atlassian.net/l/cp/H1ece5UN
-
-Jira Board:
-https://skyshi.atlassian.net/jira/software/projects/ES/boards/6
-
-Repository:
-https://bitbucket.org/rodrigocoeio/treasurehunt/src/main/
 
 
 
