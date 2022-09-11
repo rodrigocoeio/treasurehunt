@@ -135,9 +135,9 @@ v-for
 -------------------------------------------------------------------------
 BACKLOG INICIAL
 -------------------------------------------------------------------------
-Estudar / Decidir melhor linguagem/biblioteca de desenvolvimento
-
 Criar Arquitetura
+    - sistema de componentes vue vinculados ao Phaser
+    - sistema de arquivos
 Criar DDD
 Criar tabuleiro
 Criar peões ( players )
