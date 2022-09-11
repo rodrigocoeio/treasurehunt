@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import TreasureHuntGame from "../games/TreasureHuntGame.vue";
+import TreasureHuntGame from "#/TreasureHuntGame.vue";
 
 export default {
     components: {

@@ -19,10 +19,7 @@ https://bitbucket.org/rodrigocoeio/treasurehunt/src/main/
 INSTRUCTIONS
 ----------------------------------------------------------
 # RUN DEVELOPMENT MODE
-cd TreasureHunt
-npm install
-npm run dev
-open http://localhost:port
+npm --prefix TreasureHunt run dev
 
 # CHANGE HTTP HOST / PORT
 edit config in this file: ./TreasureHunt/vite.config.js
