@@ -1,23 +1,27 @@
 <template>
+    <Controls></Controls>
+
     <Welcome ref="welcome" v-show="!started"></Welcome>
 
-    <GameBoard col="7" rows="5" ref="board" v-show="started">
+    <Board col="7" rows="5" ref="board" v-show="started">
 
-        <GameDice ref="dice"></GameDice>
+        <Dice ref="dice"></Dice>
 
-        <GamePlayer v-for="player in game_configs.players" :number="player" ref="players"></GamePlayer>
+        <Player v-for="player in game_configs.players" :number="player" ref="players"></Player>
 
-    </GameBoard>
+    </Board>
 
     <div id="game-canvas"></div>
 </template>
 
 <script>
 import GameMixins from "@/mixins/GameMixins.js";
+
+import Controls from "./Controls.vue";
 import Welcome from "./Welcome.vue";
-import GameBoard from "./Board.vue";
-import GameDice from "./Dice.vue";
-import GamePlayer from "./Player.vue";
+import Board from "./Board.vue";
+import Dice from "./Dice.vue";
+import Player from "./Player.vue";
 
 export default {
     // Mix Ins do Game
@@ -127,9 +131,10 @@ export default {
 
     components: {
         Welcome,
-        GameBoard,
-        GameDice,
-        GamePlayer
+        Controls,
+        Board,
+        Dice,
+        Player
     }
 }
 </script>

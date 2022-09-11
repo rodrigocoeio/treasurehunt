@@ -1,14 +1,5 @@
 <template>
-  <header>
-    <div class="wrapper">
-      <!-- <nav>
-        
-        <RouterLink to="/treasurehunt">Treasure Hunt</RouterLink>
-        <RouterLink to="/phaserexamples">Phaser Examples</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav> -->
-
-      <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
         <!-- Chest Logo -->
         <a class="navbar-brand" href="#">
@@ -24,11 +15,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
+              <select @change="changePlayers" class="form-select">
+                <option value="2">2 Jogadores</option>
+                <option value="3">3 Jogadores</option>
+                <option value="4">4 Jogadores</option>
+                <option value="5">5 Jogadores</option>
+              </select>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#" @click="startGame">Start</a>
+            </li>
+
+            <!-- <li class="nav-item">
               <RouterLink to="/" class="nav-link active" aria-current="page">Home</RouterLink>
             </li>
             <li class="nav-item">
               <RouterLink to="/phaserexamples" class="nav-link" aria-current="page">Phaser Examples</RouterLink>
-            </li>
+            </li> -->
             <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Dropdown
@@ -50,16 +54,16 @@
         </div>
       </div>
     </nav>
-    </div>
-  </header>
-
-  <content>
-    <RouterView />
-  </content>
 </template>
 
-<script setup>
-  import { RouterLink, RouterView } from "vue-router";
+<script>
+    export default {
+        methods: {
+            startGame() {
+                
+            }
+        }
+    }
 </script>
 
 <style scoped>

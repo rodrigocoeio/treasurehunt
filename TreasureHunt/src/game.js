@@ -6,9 +6,9 @@ export default (configs, GameComponent) => {
         height: 764,
         physics: {
             default: 'arcade',
-            arcade: {
+            /* arcade: {
                 gravity: { y: 200 }
-            }
+            } */
         },
         scene: {
             preload: function preload(){      
