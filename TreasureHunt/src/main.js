@@ -10,6 +10,12 @@ import "./scripts.js";
 
 import Phaser from "phaser";
 
+// Import our custom CSS
+import './assets/styles.scss'
+
+// Import all of Bootstrap's JS
+import * as bootstrap from 'bootstrap'
+
 const app = createApp(App);
 
 app.use(createPinia());

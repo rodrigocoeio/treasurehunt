@@ -57,6 +57,10 @@ used Phaser for gaming displaying purpose
 Phaser 3 Examples
 https://codeload.github.com/photonstorm/phaser3-examples/zip/refs/heads/master
 
+Bootstrap 5
+https://getbootstrap.com/docs/5.2/getting-started/introduction/
+https://getbootstrap.com/docs/5.2/examples/
+
 ---------------------------------------------------------
 OTHER TOOLS / DOCUMENTATIONS
 ----------------------------------------------------------
