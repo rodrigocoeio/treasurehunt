@@ -1,13 +1,55 @@
 <template>
   <header>
     <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
+      <!-- <nav>
+        
         <RouterLink to="/treasurehunt">Treasure Hunt</RouterLink>
-        <RouterLink to="/monstergame">Monster Game</RouterLink>
         <RouterLink to="/phaserexamples">Phaser Examples</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-      </nav>
+      </nav> -->
+
+      <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <!-- Chest Logo -->
+        <a class="navbar-brand" href="#">
+          <img src="images/treasurechest.png">
+        </a>
+
+        <!-- Navbar Toogler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <RouterLink to="/" class="nav-link active" aria-current="page">Home</RouterLink>
+            </li>
+            <li class="nav-item">
+              <RouterLink to="/phaserexamples" class="nav-link" aria-current="page">Phaser Examples</RouterLink>
+            </li>
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li> -->
+          </ul>
+
+          <!-- <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form> -->
+
+        </div>
+      </div>
+    </nav>
     </div>
   </header>
 
@@ -21,29 +63,7 @@
 </script>
 
 <style scoped>
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: left;
-  margin-top: 2rem;
-  float:left;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
+  nav img {
+    width: 36px;
+  }
 </style>

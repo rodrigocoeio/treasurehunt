@@ -1,7 +1,5 @@
 <template>
-    <div>
-        <h1>Treasure Hunt - Board Game</h1>
- 
+    <div> 
         <treasure-hunt-game></treasure-hunt-game>
     </div>
 </template>

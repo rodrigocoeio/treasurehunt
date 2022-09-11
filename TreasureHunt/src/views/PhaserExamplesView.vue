@@ -1,7 +1,5 @@
 <template>
     <div>
-        <h1>Phaser 3 Examples</h1>
-        <h2>{{ game }}</h2>
         <nav>
             <select v-model="game">
                 <option value="first-game">First Game</option>
