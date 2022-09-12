@@ -19,7 +19,7 @@
 
             return {
                 Game: Game,
-                game_configs: Game.game_configs,
+                configs: Game.configs,
                 background_image: "images/board.jpg"
             }
         },
@@ -31,7 +31,7 @@
             },
             create(PhaserGame) {
                 // Background
-                this.background = PhaserGame.add.image(this.game_configs.width / 2, this.game_configs.height / 2, 'background');
+                this.background = PhaserGame.add.image(this.configs.width / 2, this.configs.height / 2, 'background');
             },
             update(PhaserGame) {
                 if(!this.Game.started)

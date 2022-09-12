@@ -1,28 +1,32 @@
 <template>
     <div class="GameDice">
-        <h5>{{  Game.turn.steps  }}</h5>
-        <button @click="throwDice" class="btn btn-primary" :disabled="!Game.turn.completed">Throw Dice</button>        
+        <h5 v-if="!turn.steps"> Trow the Dice!</h5>
+        <img v-if="turn.steps" :src="diceImage" class="Dice">
+        <button @click="throwDice" class="ThrowDiceButton btn btn-primary" :disabled="!turn.completed">Throw Dice</button>        
     </div>
 </template>
 
 <script>
+import store from "$/store.js";
+
 export default {
     data() {
-        return {
-            Game: this.$parent.Game
+        return store;
+    },
+    computed: {
+        diceImage() {
+            return "/images/dice/" + this.turn.steps + ".png";
         }
     },
     methods: {
         throwDice() {
-            const Game = this.Game;
-
             const steps = Math.floor(Math.random() * 6) + 1;
-            const player_number = Game.turn.player_number;
+            const player_number = this.turn.player_number;
 
-            Game.turn.player = Game.players[(player_number - 1)];
-            Game.turn.steps = steps;
+            this.turn.player = this.players[(player_number - 1)];
+            this.turn.steps = steps;
 
-            Game.nextTurn();
+            this.Game.nextTurn();
         },
 
         quitGame() {
@@ -36,9 +40,16 @@ export default {
     .GameDice {
         font-size: 16px;
         font-weight: bold;
+        text-align: center;
     }
 
-    div {
-        text-align: center;
+    .Dice {
+        display:block;
+        margin: auto;
+        margin-bottom: 15px;
+    }
+
+    .ThrowDiceButton {
+        margin-bottom: 15px;
     }
 </style>
