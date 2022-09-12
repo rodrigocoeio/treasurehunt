@@ -34,8 +34,40 @@ export default {
             PhaserGame.load.spritesheet('player', 'images/dude.png', { frameWidth: 32, frameHeight: 48 });
         },
         create(PhaserGame) {
-            this.player = this.addPlayer(PhaserGame, 'blue');
+            const player = this.addPlayer(PhaserGame, 'blue');
+
+            player.setTint('blue');
+
+            /* let container = this.add.container(32, 48, [ player ]);
+
+            container.setSize(32, 48);
+
+            container.setInteractive();
+
+            this.input.setDraggable(container);
+
+            container.on('pointerover', function () {
+
+                bg.setTint(0x44ff44);
+
+            });
+
+            container.on('pointerout', function () {
+
+                bg.clearTint();
+
+            });
+
+            this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+
+                gameObject.x = dragX;
+                gameObject.y = dragY;
+
+            }); */
+
+            return this.player = player;
         },
+
         update(PhaserGame) {
             const Game = this.Game;
             const player = this.player;

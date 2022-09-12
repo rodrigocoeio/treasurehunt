@@ -15,9 +15,10 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
-      '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
-      "#": fileURLToPath(new URL("../Components", import.meta.url))
+      "@": fileURLToPath(new URL("./src", import.meta.url)),              // Src
+      '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),    // Bootstrap
+      "#": fileURLToPath(new URL("../Components", import.meta.url)),      // Components
+      "$": fileURLToPath(new URL("./src/stores", import.meta.url)),           // Stores
     },
   },
 });

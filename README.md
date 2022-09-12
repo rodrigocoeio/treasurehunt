@@ -70,9 +70,8 @@ https://www.codeandweb.com/texturepacker/tutorials/how-to-create-sprite-sheets-f
 Tools for Game Developers
 https://www.codeandweb.com/
 
-Vue.js API
-https://vuejs.org/api/
-
+Phaser Examples
+https://github.com/photonstorm/phaser3-examples
 
 ---------------------------------------------------------
 NOTAS DE DESENVOLVIMENTO
@@ -103,6 +102,11 @@ NOTAS DE DESENVOLVIMENTO
     git status - checar quais arquivos foram modificados
     git add - adicionar arquivos a serem enviados para repositorio
     git reset --hard - restora para ultima versão baixada
+
+
+- Aliases Vite:
+    @ = /src
+    # = /Components
 
 
 -------------------------------------------------------------------------
