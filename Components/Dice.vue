@@ -1,14 +1,7 @@
 <template>
     <div class="GameDice">
-        <button @click="throwDice" :disabled="!Game.turn.completed">Throw Dice</button>
-
-        Player {{  Game.turn.player_number  }} | 
-        Turn {{  Game.turn.turn  }}
-
-        <button @click="quitGame">Quit Game</button>
-
-        <br>
         <h5>{{  Game.turn.steps  }}</h5>
+        <button @click="throwDice" class="btn btn-primary" :disabled="!Game.turn.completed">Throw Dice</button>        
     </div>
 </template>
 
@@ -43,5 +36,9 @@ export default {
     .GameDice {
         font-size: 16px;
         font-weight: bold;
+    }
+
+    div {
+        text-align: center;
     }
 </style>

@@ -107,7 +107,11 @@ export default {
 </script>
 
 <style scoped>
-nav img {
-  width: 36px;
-}
+  nav img {
+    width: 36px;
+  }
+
+  button {
+      margin-left: 15px;
+  }
 </style>

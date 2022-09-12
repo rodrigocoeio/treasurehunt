@@ -28,14 +28,13 @@ export default {
     // Mix Ins do Game
     mixins: GameMixins,
 
-    // state/variaveis do componente
-    data() {
-        return store;
+    mounted() {
+
     },
 
     // methods / actions
     methods: {
-        /* preload(PhaserGame) {
+        preload(PhaserGame) {
             this.PhaserGame = PhaserGame;
 
             // welcome
@@ -91,7 +90,7 @@ export default {
             {
                 player.update(PhaserGame);
             }
-        } */
+        }
     },
 
     components: {
@@ -105,5 +104,7 @@ export default {
 </script>
 
 <style scoped>
-/* Game Styles Goes Here */
+    #game-canvas {
+        text-align: center;
+    }
 </style>

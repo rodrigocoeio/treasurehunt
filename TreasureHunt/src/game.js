@@ -1,5 +1,7 @@
+import store from "$/store.js";
+
 export default (configs, GameComponent) => {
-    return new Phaser.Game({
+    const PhaserGame = new Phaser.Game({
         type: Phaser.AUTO,
         parent: "game-canvas",  // ID of the element where the canvas will be placed
         width: 1024,
@@ -16,8 +18,13 @@ export default (configs, GameComponent) => {
             },
             create: function create(){
                 GameComponent.create(this);
+            },
+            update: function update(){
+                GameComponent.update(this);
             }
         },
         ... configs
     });
+
+    return PhaserGame;
 }
