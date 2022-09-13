@@ -10,10 +10,11 @@ const state = {
   players: [],        //  Players
   turn: {             //  Turn
     turn: 1,
-    steps: "",
+    started: false,
+    steps: false,
     player_number: false,
     player: false,
-    completed: true
+    completed: false
   }
 };
 

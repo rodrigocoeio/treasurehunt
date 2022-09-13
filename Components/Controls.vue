@@ -18,7 +18,7 @@
 
           <!-- Select Players -->
           <li class="nav-item">
-            <select @change="changePlayers" class="form-select" :disabled="started">
+            <select v-model="configs.players" class="form-select" :disabled="started">
               <option value="2">2 Jogadores</option>
               <option value="3">3 Jogadores</option>
               <option value="4">4 Jogadores</option>
@@ -85,22 +85,6 @@ export default {
       console.log('quit game');
 
       store.started = false;
-    },
-
-    nextTurn() {
-      console.log('next turn');
-
-      store.turn.turn++;
-
-      if (store.turn.player_number >= store.configs.players) {
-        store.turn.player = store.players[0];
-        store.turn.player_number = 1;
-      } else {
-        store.turn.player_number++;
-        store.turn.player = store.players[store.turn.player_number];
-      }
-
-      store.turn.completed = false;
     }
   }
 }
