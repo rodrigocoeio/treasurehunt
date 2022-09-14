@@ -1,9 +1,9 @@
 <template>
     <Controls></Controls>
 
-    <Welcome ref="welcome" v-show="!started"></Welcome>
+    <Welcome ref="welcome" v-if="!started"></Welcome>
 
-    <Board col="7" rows="5" ref="board" v-show="started">
+    <Board col="7" rows="5" ref="board" v-if="started">
 
         <Dice ref="dice"></Dice>
 
@@ -16,7 +16,7 @@
 
 <script>
 import store from "$/store.js";
-import GameMixins from "@/mixins/GameMixins.js";
+import GameMixins from "@/mixins/game-mixins.js";
 
 import Controls from "./Controls.vue";
 import Welcome from "./Welcome.vue";

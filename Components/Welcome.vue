@@ -6,29 +6,32 @@
 
 <script>
 import store from "$/store.js";
+import objectMixins from "@/mixins/object-mixins.js";
 
 export default {
+    mixins: objectMixins,
+
     data() {
         return {
-            background_image: "images/treasure-hunt-logo.png",
-            background: false,
-            ...store
+            logo: false,
         }
     },
 
     methods: {
         preload(PhaserGame) {
-            PhaserGame.load.image('backgroud', this.background_image);
+            PhaserGame.load.image('logo', "images/treasure-hunt-logo.png");
         },
         create(PhaserGame) {
-            this.background = PhaserGame.add.image(this.configs.width / 2, this.configs.height / 2, 'backgroud');
+            this.logo = PhaserGame.add.image(store.configs.width / 2, store.configs.height / 2, 'logo');
+            console.log("created welcome logo"+ this.logo);
         },
         update(PhaserGame) {
-            if (!this.Game.started) {
-                this.background.setVisible(true);
-            } else {
-                this.background.setVisible(false);
-            }
+            console.log("updating welcome ");
+        },
+        destroy(PhaserGame) {
+            console.log("destroying welcome logo "+ this.logo);
+            if(this.logo)
+                this.logo.destroy();
         }
     }
 }

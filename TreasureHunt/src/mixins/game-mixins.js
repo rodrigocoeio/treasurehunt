@@ -1,5 +1,5 @@
-import Game from "../game.js";
 import store from "$/store.js";
+import Game from "@/game.js";
 
 const GameMixins = [];
 
@@ -8,14 +8,13 @@ GameMixins.push({
         return store;
     },
 
-    mounted() {
-        // starts the game with given configurations
-        this.Phaser = Game(this.configs, this);
+    beforeMount() {
         this.Game = this;
+        store.Game = this;
     },
 
     beforeUnmount() {
-        this.closeGame();
+        this.destroy();
     },
 
     methods: {
@@ -51,11 +50,16 @@ GameMixins.push({
             }
         },
 
-        closeGame() {
-            if(this.Phaser)
+        render(PhaserGame) {
+
+        },
+
+        destroy(PhaserGame) {
+            if(this.Phaser && !this.destroyed)
             {
                 this.Phaser.destroy(true);
                 this.Phaser = false;
+                this.destroyed=true;
             }
         }
     }

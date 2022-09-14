@@ -11,35 +11,40 @@
 
 <script>
     import GameTile from "../components/Tile.vue";
+    import store from "$/store.js";
+    import objectMixins from "@/mixins/object-mixins.js";
 
     export default 
     {
+        mixins: objectMixins,
+        
         data() {
-            const Game = this.$parent;
-
             return {
-                Game: Game,
-                configs: Game.configs,
-                background_image: "images/board.jpg"
+                board: false
             }
         },
 
         methods: {
             preload(PhaserGame) {
-                // Background
-                PhaserGame.load.image('background', this.background_image);
+                PhaserGame.load.image('board', "/images/gameboard.jpg");
+                PhaserGame.load.image('chest', "/images/treasure-hunt-logo.png");
+                console.log("preloaded board "+ this.board);
             },
             create(PhaserGame) {
-                // Background
-                this.background = PhaserGame.add.image(this.configs.width / 2, this.configs.height / 2, 'background');
+                this.board = PhaserGame.add.image(store.configs.width / 2, store.configs.height / 2, 'board');
+                this.chest = PhaserGame.add.image(400,400, 'chest');
+                console.log("created board "+ this.board);
+
+                this.chest.setScale(0.4);
             },
             update(PhaserGame) {
-                if(!this.Game.started)
-                {
-                    this.background.setVisible(false);
-                } else {
-                    this.background.setVisible(true);
-                }
+                console.log("updating board "+ this.board);
+            },
+            destroy(PhaserGame) {
+                if(this.board)
+                    this.board.destroy();
+
+                console.log("destroyed board "+ this.board);
             }
         },
 

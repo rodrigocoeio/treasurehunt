@@ -5,8 +5,13 @@
 </template>
 
 <script>
+import objectMixins from "@/mixins/object-mixins.js";
+import store from "$/store.js";
+
 export default {
     props: ['number'],
+
+    mixins: objectMixins,
 
     data() {
         const Game = this.$parent.Game;
@@ -18,26 +23,22 @@ export default {
         }
     },
 
-    mounted() {
-        if(this.Game.started && !this.player)
-            this.addPlayer(this.Game.PhaserGame);
-    },
-
-    beforeUnmount() {
-        if(this.player)
-            this.player.setVisible(false);
-    },
-
     methods: {
         preload(PhaserGame) {
-            // Player
-            PhaserGame.load.spritesheet('player', 'images/dude.png', { frameWidth: 32, frameHeight: 48 });
+            // Player Image
+            const playerName = 'player'+this.number;
+            PhaserGame.load.image(playerName, 'images/players/'+playerName+'.png');
         },
         create(PhaserGame) {
-            const player = this.addPlayer(PhaserGame, 'blue');
+            const player = this.createPlayer(PhaserGame, 'blue');
 
-            player.setTint('blue');
+            return this.player = player;
+        },
+        createPlayer(PhaserGame) {
+            const playerName = 'player'+this.number;
+            const player = PhaserGame.add.image(playerName, store.configs.width / 2, store.configs.height / 2);            player.setTint('blue');
 
+            console.log(player);
             /* let container = this.add.container(32, 48, [ player ]);
 
             container.setSize(32, 48);
@@ -64,8 +65,6 @@ export default {
                 gameObject.y = dragY;
 
             }); */
-
-            return this.player = player;
         },
 
         update(PhaserGame) {
