@@ -18,43 +18,24 @@
 
           <!-- Select Players -->
           <li class="nav-item">
-            <select v-model="configs.players" class="form-select" :disabled="started">
-              <option value="2">2 Jogadores</option>
-              <option value="3">3 Jogadores</option>
-              <option value="4">4 Jogadores</option>
-              <option value="5">5 Jogadores</option>
+            <select v-model="configs.players" class="form-select" disabled="true">
+              <option value="0" selected>Choose Players</option>
+              <option value="1">Single Player</option>
+              <option value="2">Two Players</option>
+              <option value="3">Three Players</option>
+              <option value="4">Four Players</option>
+              <option value="5">Five Players</option>
             </select>
           </li>
 
           <!-- Start Game -->
           <li class="nav-item" v-show="!started">
-            <button @click="startGame" class="btn btn-primary">Start Game</button>
+            <button @click="startGame" :disabled="configs.players===0" class="btn btn-primary">Start Game</button>
           </li>
 
           <!-- Quit Game -->
           <li class="nav-item" v-show="started">
             <button @click="quitGame" class="btn btn-danger">Quit Game</button>
-          </li>
-
-          <!-- Phaser Examples -->
-          <!-- <li class="nav-item">
-              <RouterLink to="/" class="nav-link active" aria-current="page">Home</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink to="/phaserexamples" class="nav-link" aria-current="page">Phaser Examples</RouterLink>
-            </li> -->
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right">
-
-          <!-- GAME STATUS -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Game Status
-            </a>
-            <ul class="dropdown-menu">
-              <li>Started: {{ started }}</li>
-            </ul>
           </li>
         </ul>
       </div>
@@ -85,6 +66,7 @@ export default {
       console.log('quit game');
 
       store.started = false;
+      store.configs.players=0;
     }
   }
 }

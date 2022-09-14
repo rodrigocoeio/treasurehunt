@@ -22,40 +22,74 @@ GameMixins.push({
         preload(PhaserGame) {
             this.Phaser = PhaserGame;
 
-            for(let refName in this.$refs) {
+            for (let refName in this.$refs) {
                 let object = this.$refs[refName];
 
-                if(object && object.preload){
-                    object.preload(PhaserGame) 
+                if (object && object.preload) {
+                    object.preload(PhaserGame)
+                }
+
+                // case array of refs
+                else if (object && object.length) {
+                    object.forEach((obj) => {
+                        if (obj && obj.preload) {
+                            obj.preload(PhaserGame)
+                        }
+                    });
                 }
             }
-        }, 
+        },
 
         create(PhaserGame) {
-            for(let refName in this.$refs) {
+            for (let refName in this.$refs) {
                 let object = this.$refs[refName];
 
-                if(object && object.create){
-                    object.create(PhaserGame) 
+                if (object && object.create) {
+                    object.create(PhaserGame)
+                }
+
+                // case array of refs
+                else if (object && object.length) {
+                    object.forEach((obj) => {
+                        if (obj && obj.create) {
+                            obj.create(PhaserGame)
+                        }
+                    });
                 }
             }
         },
 
         update(PhaserGame) {
-            for(let refName in this.$refs) {
+            for (let refName in this.$refs) {
                 let object = this.$refs[refName];
 
-                if(object && object.update){
-                    object.update(PhaserGame) 
+                if (object && object.update) {
+                    object.update(PhaserGame)
+                }
+
+                // case array of refs
+                else if (object && object.length) {
+                    object.forEach((obj) => {
+                        if (obj && obj.update) {
+                            obj.update(PhaserGame)
+                        }
+                    });
                 }
             }
         },
 
-        closeGame() {
-            if(this.Phaser)
-            {
+        render() {
+
+            game.debug.text("Game Status: " + store.started, 32, 32);
+            this.rendering = true;
+
+        },
+
+        destroy() {
+            if (this.Phaser && !this.destroyed) {
                 this.Phaser.destroy(true);
                 this.Phaser = false;
+                this.destroyed = true;
             }
         }
     }

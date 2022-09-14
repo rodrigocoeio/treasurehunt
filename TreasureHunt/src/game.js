@@ -6,6 +6,7 @@ export default (configs, GameComponent) => {
         parent: "game-canvas",  // ID of the element where the canvas will be placed
         width: 1024,
         height: 764,
+        backgroundColor: "#fffcbd",
         physics: {
             default: 'arcade',
             /* arcade: {
@@ -13,14 +14,17 @@ export default (configs, GameComponent) => {
             } */
         },
         scene: {
-            preload: function preload(){      
+            preload(){      
                 GameComponent.preload(this);
             },
-            create: function create(){
+            create(){
                 GameComponent.create(this);
             },
-            update: function update(){
+            update(){
                 GameComponent.update(this);
+            },
+            render() {
+                GameComponent.render(this);
             }
         },
         ... configs

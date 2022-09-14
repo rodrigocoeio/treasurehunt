@@ -10,6 +10,9 @@ import "./scripts.js";
 
 import Phaser from "phaser";
 
+import jQuery from "jquery";
+window.$ = jQuery;
+
 // Import our custom CSS
 import './assets/styles.scss'
 

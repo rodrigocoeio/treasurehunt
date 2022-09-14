@@ -4,7 +4,7 @@ const state = {
   configs: {        // Game Configs
     width: 894,
     height: 651,
-    players: 2
+    players: 0
   },
   started: false,     //  Game Started
   players: [],        //  Players

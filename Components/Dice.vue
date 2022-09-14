@@ -8,7 +8,7 @@
         <img v-if="turn.started" :src="diceImage" class="Dice">
 
         <button v-if="!turn.started" @click="throwDice" class="ThrowDiceButton btn btn-primary">Throw Dice</button>        
-        <button v-if="turn.started" @click="nextTurn" class="NextTurnButton btn btn-primary">Next Turn</button>        
+        <button v-if="turn.started" @click="nextTurn" :disabled="!turn.completed" class="NextTurnButton btn btn-primary">Next Turn</button>        
     </div>
 </template>
 
@@ -36,6 +36,7 @@ export default {
             this.turn.steps = steps;
 
             this.turn.started = true;
+            this.turn.completed = false;
         },
 
         nextTurn() {
@@ -52,6 +53,7 @@ export default {
             }
 
             store.turn.started = false;
+            store.turn.completed = true;
         },
 
         quitGame() {

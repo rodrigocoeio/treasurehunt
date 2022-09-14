@@ -1,9 +1,9 @@
 <template>
     <Controls></Controls>
 
-    <Welcome ref="welcome" v-show="!started"></Welcome>
+    <Welcome ref="welcome" v-if="!started"></Welcome>
 
-    <Board col="7" rows="5" ref="board" v-show="started">
+    <Board col="7" rows="5" ref="board" v-if="started">
 
         <Dice ref="dice"></Dice>
 
