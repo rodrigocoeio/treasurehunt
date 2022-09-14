@@ -1,5 +1,5 @@
-import Game from "../game.js";
 import store from "$/store.js";
+import Game from "@/game.js";
 
 const GameMixins = [];
 
@@ -8,14 +8,13 @@ GameMixins.push({
         return store;
     },
 
-    mounted() {
-        // starts the game with given configurations
-        this.Phaser = Game(this.configs, this);
+    beforeMount() {
         this.Game = this;
+        store.Game = this;
     },
 
     beforeUnmount() {
-        this.closeGame();
+        this.destroy();
     },
 
     methods: {
@@ -78,6 +77,7 @@ GameMixins.push({
             }
         },
 
+<<<<<<< HEAD:TreasureHunt/src/mixins/GameMixins.js
         render() {
 
             game.debug.text("Game Status: " + store.started, 32, 32);
@@ -90,6 +90,18 @@ GameMixins.push({
                 this.Phaser.destroy(true);
                 this.Phaser = false;
                 this.destroyed = true;
+=======
+        render(PhaserGame) {
+
+        },
+
+        destroy(PhaserGame) {
+            if(this.Phaser && !this.destroyed)
+            {
+                this.Phaser.destroy(true);
+                this.Phaser = false;
+                this.destroyed=true;
+>>>>>>> 759af0e31ab488e8a5e7afa9df7f1b07d2679fba:TreasureHunt/src/mixins/game-mixins.js
             }
         }
     }

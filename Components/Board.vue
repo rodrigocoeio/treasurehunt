@@ -18,8 +18,6 @@
     {
         mixins: objectMixins,
         data() {
-            const Game = this.$parent;
-
             return {
                 Game: Game,
                 ... store

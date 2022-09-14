@@ -4,11 +4,17 @@
             <img :src="playerImage">
             <h5>Player {{ turn.player_number }}</h5>
         </div>
-        
+
         <img v-if="turn.started" :src="diceImage" class="Dice">
 
-        <button v-if="!turn.started" @click="throwDice" class="ThrowDiceButton btn btn-primary">Throw Dice</button>        
-        <button v-if="turn.started" @click="nextTurn" :disabled="!turn.completed" class="NextTurnButton btn btn-primary">Next Turn</button>        
+        <button v-if="!turn.started" @click="throwDice" class="ThrowDiceButton btn btn-primary">
+            <img src="/images/dice/dice.png" height="24">
+            Throw the Dice !
+        </button>
+        <button v-if="turn.started" @click="nextTurn" class="NextTurnButton btn btn-primary">
+            <img src="/images/signnext.png" height="24">
+            Next Turn ...
+        </button>
     </div>
 </template>
 
@@ -28,6 +34,14 @@ export default {
         }
     },
     methods: {
+        preload() {
+            console.log('preloading dice');
+            for (let i = 1; i <= 6; i++) {
+                let image = new Image();
+                image.src = "/images/dice/" + i + ".png";
+            }
+        },
+
         throwDice() {
             const steps = Math.floor(Math.random() * 6) + 1;
             const player_number = this.turn.player_number;
@@ -64,23 +78,27 @@ export default {
 </script>
 
 <style scoped>
-    .GameDice {
-        font-size: 16px;
-        font-weight: bold;
-        text-align: center;
-    }
+.GameDice {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
 
-    .Dice {
-        display:block;
-        margin: auto;
-        margin-bottom: 15px;
-    }
+.Dice {
+    display: block;
+    margin: auto;
+    margin-top: 17px;
+    margin-bottom: 15px;
+}
 
-    .Player img {
-        max-height: 63px;
-    }
+.Player img {
+    max-height: 63px;
+}
 
-    button {
-        margin-bottom: 15px;
-    }
+button {
+    margin-bottom: 15px;
+    font-family: aerial;
+    font-size: 23px;
+    font-weight: bold;
+}
 </style>

@@ -16,7 +16,7 @@
 
 <script>
 import store from "$/store.js";
-import GameMixins from "@/mixins/GameMixins.js";
+import GameMixins from "@/mixins/game-mixins.js";
 
 import Controls from "./Controls.vue";
 import Welcome from "./Welcome.vue";

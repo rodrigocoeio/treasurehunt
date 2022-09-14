@@ -5,8 +5,13 @@
 </template>
 
 <script>
+import objectMixins from "@/mixins/object-mixins.js";
+import store from "$/store.js";
+
 export default {
     props: ['number','name'],
+
+    mixins: objectMixins,
 
     data() {
         const Game = this.$parent.Game;
