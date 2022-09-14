@@ -38,7 +38,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+    body {
+        text-align: center;
+    }
+    
     #game-canvas {
         text-align: center;
     }

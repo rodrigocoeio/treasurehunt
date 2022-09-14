@@ -9,8 +9,9 @@ GameMixins.push({
     },
 
     beforeMount() {
-        this.Game = this;
         store.Game = this;
+
+        Game(store.configs, this);
     },
 
     beforeUnmount() {
@@ -77,7 +78,6 @@ GameMixins.push({
             }
         },
 
-<<<<<<< HEAD:TreasureHunt/src/mixins/GameMixins.js
         render() {
 
             game.debug.text("Game Status: " + store.started, 32, 32);
@@ -90,18 +90,6 @@ GameMixins.push({
                 this.Phaser.destroy(true);
                 this.Phaser = false;
                 this.destroyed = true;
-=======
-        render(PhaserGame) {
-
-        },
-
-        destroy(PhaserGame) {
-            if(this.Phaser && !this.destroyed)
-            {
-                this.Phaser.destroy(true);
-                this.Phaser = false;
-                this.destroyed=true;
->>>>>>> 759af0e31ab488e8a5e7afa9df7f1b07d2679fba:TreasureHunt/src/mixins/game-mixins.js
             }
         }
     }
