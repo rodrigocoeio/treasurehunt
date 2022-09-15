@@ -1,11 +1,6 @@
 <template>
     <div class="GameBoard">
         <slot></slot>
-        <GameTile v-for="i in 7"></GameTile>
-        <GameTile v-for="i in 7"></GameTile>
-        <GameTile v-for="i in 7"></GameTile>
-        <GameTile v-for="i in 7"></GameTile>
-        <GameTile v-for="i in 7"></GameTile>
     </div>
 
     <div id="game-canvas" class="container"></div>
@@ -13,7 +8,6 @@
 
 <script>
     import store from "$/store.js";
-    import GameTile from "../components/Tile.vue";
     import gameMixins from "@/mixins/game-mixins";
 
     export default 
@@ -43,11 +37,6 @@
                 if(this.board)
                     this.board.destroy();
             }
-        },
-
-        components: 
-        {
-            GameTile
         }
     }
 </script>

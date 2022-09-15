@@ -7,8 +7,7 @@
 
         <Dice ref="dice"></Dice>
 
-        <Player v-for="player in configs.players" :number="player" ref="players"></Player>
-
+        <Player v-for="player in players" :player="player" ref="players"></Player>
     </Board>
 </template>
 
@@ -19,6 +18,7 @@ import Welcome from "./Welcome.vue";
 import Board from "./Board.vue";
 import Dice from "./Dice.vue";
 import Player from "./Player.vue";
+import Tile from "../components/Tile.vue";
 
 export default {
     data() {
@@ -30,7 +30,8 @@ export default {
         Controls,
         Board,
         Dice,
-        Player
+        Player,
+        Tile
     }
 }
 </script>
@@ -38,6 +39,7 @@ export default {
 <style>
     body {
         text-align: center;
+        padding-top: 70px;
     }
     
     #game-canvas {

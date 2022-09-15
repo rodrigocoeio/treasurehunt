@@ -16,6 +16,54 @@ export default {
     data() {
         return {
             background: false,
+            players_available: [
+                {
+                    name: "Pirate",
+                    image: "/images/players/player1.png",
+                    welcome: {
+                        position: {x:700,y:400}
+                    },
+                    position: {x:90,y:90},
+                    scale: 0.2
+                },
+                {
+                    name: "Dinosaur",
+                    image: "/images/players/player2.png",
+                    welcome: {
+                        position: {x:200,y:500}
+                    },
+                    position: {x:30,y:100},
+                    scale: 0.3
+                },
+                {
+                    name: "Ninja",
+                    image: "/images/players/player3.png",
+                    welcome: {
+                        position: {x:440,y:480}
+                    },
+                    position: {x:50,y:80},
+                    scale: 0.5
+                },
+                {
+                    name: "Fairy",
+                    image: "/images/players/player4.png",
+                    welcome: {
+                        position: {x:600,y:170},
+                        scale: 0.5
+                    },
+                    position: {x:80,y:20},
+                    scale: 0.2
+                },
+                {
+                    name: "Parrot",
+                    image: "/images/players/player5.png",
+                    welcome: {
+                        position: {x:200,y:200}
+                    },
+                    position: {x:30,y:30},
+                    scale: 0.3
+                }
+            ],
             ...store
         }
     },
@@ -25,30 +73,36 @@ export default {
             PhaserGame.load.image('background', 'images/background.png');
             PhaserGame.load.image('logo', 'images/treasure-hunt-logo.png');
             PhaserGame.load.image('chest', 'images/treasurechest.png');
+
             // Players
-            PhaserGame.load.image('Pirate', '/images/players/player1.png');
-            PhaserGame.load.image('Dinosaur', '/images/players/player2.png');
-            PhaserGame.load.image('Ninja', '/images/players/player3.png');
-            PhaserGame.load.image('Fairy', '/images/players/player4.png');
-            PhaserGame.load.image('Parrot', '/images/players/player5.png');
+            this.players_available.forEach((player) => {
+                PhaserGame.load.image(player.name, player.image);
+            });            
         },
         create(PhaserGame) {
+            const Welcome = this;
             this.background = PhaserGame.add.image(this.configs.width / 2, this.configs.height / 2, 'background');
             this.logo = PhaserGame.add.image(this.configs.width / 2, this.configs.height / 2, 'logo');
             //this.chest = PhaserGame.add.image(this.configs.width / 2, this.configs.height / 2, 'chest');
 
-            this.player1 = this.createPlayer(PhaserGame, 700, 400, 'Pirate');
-            this.player2 = this.createPlayer(PhaserGame, 200, 400, 'Dinosaur');
-            this.player3 = this.createPlayer(PhaserGame, 440, 480, 'Ninja');
-            this.player4 = this.createPlayer(PhaserGame, 600, 170, 'Fairy');
-            this.player5 = this.createPlayer(PhaserGame, 200, 200, 'Parrot');
-
-            this.player4.setScale(0.5, 0.5);
+            // Players
+            this.players_available.forEach((player) => {
+                Welcome.createPlayer(PhaserGame, player);
+            });
         },
-        createPlayer(PhaserGame, x, y, playerName) {
+        createPlayer(PhaserGame, playerConfigs) {
             const Welcome = this;
+
+            const name = playerConfigs.name;
+            const x = playerConfigs.welcome.position.x;
+            const y = playerConfigs.welcome.position.y;
+            const scale = playerConfigs.welcome.scale;
             
-            const player = PhaserGame.add.sprite(x, y, playerName);
+            const player = PhaserGame.add.sprite(x, y, name);
+
+            if(scale)
+                player.setScale(scale);
+
             player.setAlpha(0.6);
             player.setInteractive();
             player.inputEnabled = true;
@@ -56,62 +110,41 @@ export default {
                 this.setAlpha(1);
             });
             player.on('pointerout', function (event) {
-                this.setAlpha(0.7);
+                this.setAlpha(0.6);
             });
             player.on('pointerup', function (pointer) {
                 if(!player.selected){
-                    Welcome.selectPlayer(PhaserGame,x,y,player, playerName);
+                    Welcome.selectPlayer(PhaserGame,player,playerConfigs);
                     player.selected = true;
                 }                
             });
             return player;
         },
-        selectPlayer(PhaserGame, x, y, player, playerName) {
-            player.text = PhaserGame.add.text(x - 100, y+40, playerName, { fontSize: 40, color: 'white', backgroundColor: 'black', fontWeight: 'bold'});
+        selectPlayer(PhaserGame, player, playerConfigs) {
+            const x = playerConfigs.welcome.position.x;
+            const y = playerConfigs.welcome.position.y;
+            player.text = PhaserGame.add.text(x - 100, y+40, playerConfigs.name, { fontSize: 40, color: 'white', backgroundColor: 'black', fontWeight: 'bold'});
             player.setAlpha(1);
             player.on('pointerout', function (event) {
                 this.setAlpha(1);
             });
             store.configs.players++;
+            store.players.push({
+                number: (store.players.length + 1),
+                name: playerConfigs.name,
+                image: playerConfigs.image,
+                position: playerConfigs.position,
+                scale: playerConfigs.scale,
+                steps: 0
+            });
         },
         update(PhaserGame) {
 
-        },
-        destroy(PhaserGame) {
-            if (this.background)
-                this.background.destroy();
-            if (this.logo)
-                this.logo.destroy();
-            if (this.player1)
-                this.player1.destroy();
-            if (this.player2)
-                this.player2.destroy();
-            if (this.player3)
-                this.player3.destroy();
-            if (this.player4)
-                this.player4.destroy();
-            if (this.player5)
-                this.player5.destroy();
-
-            if (this.player1.text)
-                this.player1.text.destroy();
-            if (this.player2.text)
-                this.player2.text.destroy();
-            if (this.player3.text)
-                this.player3.text.destroy();
-            if (this.player4.text)
-                this.player4.text.destroy();
-            if (this.player5.text)
-                this.player5.text.destroy();
         }
     }
 }
 </script>
 
 <style>
-.navbar {
-    position: absolute;
-    top: 550px;
-    left: calc(50% - 150px);
-}
+
 </style>

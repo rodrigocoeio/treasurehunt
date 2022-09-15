@@ -69,17 +69,24 @@ export default {
 
       store.started = false;
       store.configs.players=0;
+      store.players = [];
     }
   }
 }
 </script>
 
-<style scoped>
+<style>
   nav img {
     width: 36px;
   }
 
   button {
       margin-left: 15px;
+  }
+
+  .navbar {
+      position: absolute;
+      top: 0px;
+      left: calc(50% - 150px);
   }
 </style>
