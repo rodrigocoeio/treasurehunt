@@ -14,7 +14,7 @@
                         <img src="/images/dice/dice.png" height="24">
                         Throw the Dice !
                     </button>
-                    <button v-if="turn.started" @click="nextTurn" class="NextTurnButton btn btn-primary">
+                    <button v-if="turn.started" :disabled="!turn.completed" @click="nextTurn" class="NextTurnButton btn btn-primary">
                         <img src="/images/signnext.png" height="24">
                         Next Turn ...
                     </button>
@@ -88,7 +88,6 @@ export default {
             }
 
             store.turn.started = false;
-            store.turn.completed = true;
         },
 
         quitGame() {

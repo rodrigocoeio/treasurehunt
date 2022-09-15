@@ -62,6 +62,8 @@ export default {
                         this.Player.body.reset(this.target.x, this.target.y);
                         if(tile.rule)
                             tile.rule(this);
+                        else
+                            store.turn.completed = true;
                     }
                 }
             }
