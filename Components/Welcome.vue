@@ -39,7 +39,7 @@ export default {
                     name: "Ninja",
                     image: "/images/players/player3.png",
                     welcome: {
-                        position: {x:440,y:480}
+                        position: {x:480,y:500}
                     },
                     position: {x:50,y:80},
                     scale: 0.5
@@ -71,7 +71,7 @@ export default {
     methods: {
         preload(PhaserGame) {
             PhaserGame.load.image('background', 'images/background.png');
-            PhaserGame.load.image('logo', 'images/treasure-hunt-logo.png');
+            PhaserGame.load.image('logo', 'images/treasurehunt.png');
             PhaserGame.load.image('chest', 'images/treasurechest.png');
 
             // Players
@@ -82,8 +82,13 @@ export default {
         create(PhaserGame) {
             const Welcome = this;
             this.background = PhaserGame.add.image(this.configs.width / 2, this.configs.height / 2, 'background');
-            this.logo = PhaserGame.add.image(this.configs.width / 2, this.configs.height / 2, 'logo');
-            //this.chest = PhaserGame.add.image(this.configs.width / 2, this.configs.height / 2, 'chest');
+            
+            this.chest = PhaserGame.add.image(this.configs.width / 2, (this.configs.height / 2) + 80, 'chest');
+            this.logo = PhaserGame.add.image(this.configs.width / 2, (this.configs.height / 2) - 70, 'logo');
+
+            this.logo.setScale(0.7);
+            this.chest.setScale(0.5);
+            this.chest.setAlpha(0.5);
 
             // Players
             this.players_available.forEach((player) => {

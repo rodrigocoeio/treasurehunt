@@ -1,38 +1,19 @@
 <template>
-    <table>
-        <tr>
-            <td>
-                <div class="GameDice">
-                    <div class="Player" v-if="!turn.started">
-                        <img :src="playerImage">
-                        <h5>{{ turn.player.name }}</h5>
-                    </div>
+    <div class="GameDice">
+        <div class="Player" v-if="!turn.started">
+            <img :src="playerImage">
+            <h5>{{ turn.player.name }}</h5>
+        </div>
 
-                    <img v-if="turn.started" :src="diceImage" class="Dice">
+        <img v-if="turn.started" :src="diceImage" class="Dice">
 
-                    <button v-if="!turn.started" @click="throwDice" class="ThrowDiceButton btn btn-primary">
-                        <img src="/images/dice/dice.png" height="24">
-                        Throw the Dice !
-                    </button>
-                    <button v-if="turn.started" :disabled="!turn.completed" @click="nextTurn" class="NextTurnButton btn btn-primary">
-                        <img src="/images/signnext.png" height="24">
-                        Next Turn ...
-                    </button>
-                </div>
-            </td>
-            <td width="300">
-                <div class="GameDashboard">
-                    <h5>Turn Nº{{ turn.turn }}</h5>
-                    <h6 :class="['PlayerName']" v-for="player in players">
-                        <img :src="player.image" height="24">
-                        {{ player.name }}
-                        {{ player.steps }}
-                    </h6>
-                </div>
-            </td>
-        </tr>
-    </table>
-
+        <button v-if="!turn.started" @click="throwDice" class="ThrowDiceButton btn btn-primary">
+            Throw <img src="/images/dice/dice.png" height="24">
+        </button>
+        <button v-if="turn.started" :disabled="!turn.completed" @click="nextTurn" class="NextTurnButton btn btn-primary">
+            Next <img src="/images/signnext.png" height="24">
+        </button>
+    </div>
 </template>
 
 <script>
@@ -101,6 +82,8 @@ export default {
 table {
     margin: auto;
     text-align: center;
+    position: absolute;
+    left: calc(100% - 300px);
 }
 
 .GameDice {

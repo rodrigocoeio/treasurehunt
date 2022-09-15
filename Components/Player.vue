@@ -75,8 +75,8 @@ export default {
             const y = this.player.position ? this.player.position.y : 0;
             const tile = store.configs.tiles[this.player.steps] ? store.configs.tiles[this.player.steps] : false;
             this.target = {
-                x: tile ? (tile.x + x) : 50,
-                y: tile ? (tile.y + y) : 50,
+                x: tile ? (tile.x + x) : 768,
+                y: tile ? (tile.y + y) : 520,
                 tile: tile
             };
             this.physics.moveToObject(this.Player, this.target, 200);
