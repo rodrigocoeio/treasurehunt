@@ -11,14 +11,13 @@ export default [{
         };
     },
     mounted() {
-        if (store.Phaser && !this.preloaded)
-            this.preload(store.Phaser);
-        if (store.Phaser && !this.created)
-            this.create(store.Phaser);
+        store.components.push(this);
     },
     beforeUnmount() {
         if (store.Phaser && !this.destroyed)
             this.destroy(store.Phaser);
+
+        store.components = store.components.filter(object => object!=this); 
     },
     methods: {
         preload() {

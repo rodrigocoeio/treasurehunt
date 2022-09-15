@@ -1,6 +1,7 @@
 const state = {
   Phaser: false,    // Phaser Instance
   Game: false,      // Game Component
+  components: [],
   configs: {        // Game Configs
     width: 894,
     height: 651,

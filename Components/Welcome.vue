@@ -2,14 +2,16 @@
     <div class="TreasureHuntWelcome">
 
     </div>
+
+    <div id="game-canvas" class="container"></div>
 </template>
 
 <script>
 import store from "$/store.js";
-import objectMixins from "@/mixins/objectMixins";
+import gameMixins from "@/mixins/game-mixins.js";
 
 export default {
-    mixins: objectMixins,
+    mixins: gameMixins,
 
     data() {
         return {
@@ -35,16 +37,15 @@ export default {
             this.logo = PhaserGame.add.image(this.configs.width / 2, this.configs.height / 2, 'logo');
             //this.chest = PhaserGame.add.image(this.configs.width / 2, this.configs.height / 2, 'chest');
 
-            this.player1 = this.createPlayer(700, 400, 'Pirate');
-            this.player2 = this.createPlayer(200, 400, 'Dinosaur');
-            this.player3 = this.createPlayer(440, 480, 'Ninja');
-            this.player4 = this.createPlayer(600, 170, 'Fairy');
-            this.player5 = this.createPlayer(200, 200, 'Parrot');
+            this.player1 = this.createPlayer(PhaserGame, 700, 400, 'Pirate');
+            this.player2 = this.createPlayer(PhaserGame, 200, 400, 'Dinosaur');
+            this.player3 = this.createPlayer(PhaserGame, 440, 480, 'Ninja');
+            this.player4 = this.createPlayer(PhaserGame, 600, 170, 'Fairy');
+            this.player5 = this.createPlayer(PhaserGame, 200, 200, 'Parrot');
 
             this.player4.setScale(0.5, 0.5);
         },
-        createPlayer(x, y, playerName) {
-            const PhaserGame = store.Phaser;
+        createPlayer(PhaserGame, x, y, playerName) {
             const Welcome = this;
             
             const player = PhaserGame.add.sprite(x, y, playerName);
@@ -59,14 +60,13 @@ export default {
             });
             player.on('pointerup', function (pointer) {
                 if(!player.selected){
-                    Welcome.selectPlayer(x,y,player, playerName);
+                    Welcome.selectPlayer(PhaserGame,x,y,player, playerName);
                     player.selected = true;
                 }                
             });
             return player;
         },
-        selectPlayer(x,y,player, playerName) {
-            const PhaserGame = store.Phaser;
+        selectPlayer(PhaserGame, x, y, player, playerName) {
             player.text = PhaserGame.add.text(x - 100, y+40, playerName, { fontSize: 40, color: 'white', backgroundColor: 'black', fontWeight: 'bold'});
             player.setAlpha(1);
             player.on('pointerout', function (event) {

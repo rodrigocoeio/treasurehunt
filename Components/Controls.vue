@@ -56,6 +56,8 @@ export default {
       console.log('start game');
 
       store.started = true;
+      store.turn.started = false;
+      store.turn.completed = false;
       store.turn.turn = 1;
       store.turn.steps = "";
       store.turn.player = this.players[0];

@@ -8,10 +8,12 @@ GameMixins.push({
         return store;
     },
 
-    beforeMount() {
+    mounted() {
         store.Game = this;
 
-        Game(store.configs, this);
+        console.log('game mounted ' + store.components.length)
+
+        store.Phaser = Game(store.configs, this, store.components);
     },
 
     beforeUnmount() {
@@ -20,7 +22,7 @@ GameMixins.push({
 
     methods: {
         preload(PhaserGame) {
-            this.Phaser = PhaserGame;
+            /* this.Phaser = PhaserGame;
 
             for (let refName in this.$refs) {
                 let object = this.$refs[refName];
@@ -37,11 +39,11 @@ GameMixins.push({
                         }
                     });
                 }
-            }
+            } */
         },
 
         create(PhaserGame) {
-            for (let refName in this.$refs) {
+            /* for (let refName in this.$refs) {
                 let object = this.$refs[refName];
 
                 if (object && object.create) {
@@ -56,11 +58,11 @@ GameMixins.push({
                         }
                     });
                 }
-            }
+            } */
         },
 
         update(PhaserGame) {
-            for (let refName in this.$refs) {
+            /* for (let refName in this.$refs) {
                 let object = this.$refs[refName];
 
                 if (object && object.update) {
@@ -75,13 +77,13 @@ GameMixins.push({
                         }
                     });
                 }
-            }
+            } */
         },
 
         render() {
 
-            game.debug.text("Game Status: " + store.started, 32, 32);
-            this.rendering = true;
+            /* game.debug.text("Game Status: " + store.started, 32, 32);
+            this.rendering = true; */
 
         },
 
