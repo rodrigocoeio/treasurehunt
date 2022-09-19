@@ -23,7 +23,7 @@ export default {
                     welcome: {
                         position: {x:700,y:400}
                     },
-                    position: {x:90,y:90},
+                    position: {x:90,y:85},
                     scale: 0.2
                 },
                 {
@@ -41,7 +41,7 @@ export default {
                     welcome: {
                         position: {x:480,y:500}
                     },
-                    position: {x:50,y:80},
+                    position: {x:60,y:100},
                     scale: 0.5
                 },
                 {
@@ -51,7 +51,7 @@ export default {
                         position: {x:600,y:170},
                         scale: 0.5
                     },
-                    position: {x:80,y:20},
+                    position: {x:90,y:20},
                     scale: 0.2
                 },
                 {
@@ -140,7 +140,9 @@ export default {
                 image: playerConfigs.image,
                 position: playerConfigs.position,
                 scale: playerConfigs.scale,
-                steps: 0
+                steps: 0,
+                walk: 0,
+                finished: false
             });
         },
         update(PhaserGame) {
