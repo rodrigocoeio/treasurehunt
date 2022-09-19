@@ -7,10 +7,16 @@
 
         <img v-if="turn.started" :src="diceImage" class="Dice">
 
-        <button v-if="!turn.started" @click="throwDice" class="ThrowDiceButton btn btn-primary">
+        <button v-if="rollButton" :disabled="(turn.started && !turn.completed)" @click="throwDice" class="ThrowDiceButton btn btn-primary">
             Roll <img src="/images/dice/dice.png" height="24">
         </button>
-        <button v-if="turn.started" :disabled="!turn.completed" @click="nextTurn" class="NextTurnButton btn btn-primary">
+        <button v-if="moveButton" @click="movePlayer" class="btn btn-primary">
+            Move <img src="/images/signnext.png" height="24">
+        </button>
+        <button v-if="ruleButton" @click="executeRule" class="btn btn-primary">
+            {{ turn.rule.name }}
+        </button>
+        <button v-if="nextButton" :disabled="!turn.completed" @click="nextTurn" class="NextTurnButton btn btn-primary">
             Next <img src="/images/signnext.png" height="24">
         </button>
     </div>
@@ -21,14 +27,39 @@ import store from "$/store.js";
 
 export default {
     data() {
-        return store;
+        return {
+            rolling: false,
+            steps: 0,
+            turn: store.turn
+        };
     },
     computed: {
+        rollButton() {
+            return (!store.turn.started && !this.steps);
+        },
+        moveButton() {
+            return (store.turn.started && !store.turn.moved);
+        },
+        nextButton() {
+            return (store.turn.started && store.turn.moved && !this.ruleButton);
+        },
+        ruleButton() {
+            return (store.turn.started && store.turn.rule);
+        },
         diceImage() {
-            return "/images/dice/" + this.turn.steps + ".png";
+            if(this.steps)
+                return "/images/dice/" + this.steps + ".png";
+
+            return "/images/dice/dice.png";
+        },
+        player() {
+            return store.turn.player;
         },
         playerImage() {
-            return this.turn.player.image;
+            return this.player.image;
+        },
+        players() {
+            return store.players;
         }
     },
     methods: {
@@ -41,24 +72,43 @@ export default {
         },
 
         throwDice() {
-            const steps = Math.floor(Math.random() * 6) + 1;
+            this.steps = Math.floor(Math.random() * 6) + 1;
+
+            playAudio('dice');
+            playAudio('dice-'+this.steps);
+
+            console.log(this.player.name + " has rolled a " + this.steps);
+
+            this.startTurn();
+        },
+
+        startTurn() {
             const player_number = (this.turn.player_number - 1);
             const player = this.players[player_number];
-            const walk_to = player.steps + steps;
-            
-            this.turn.player = player;
-            this.turn.steps = steps;
-            this.turn.started = true;
-            this.turn.completed = false;
+            store.turn.started = true;
+            store.turn.player = player;
+            store.turn.steps = this.steps;
+            store.turn.moved = false;
+            store.turn.completed = false;
+        },
 
-            console.log(player.name + ' has rolled a ' + steps + ' and will walk to ' + walk_to);
+        movePlayer() {
+            const walk_to = this.player.steps + this.steps;
 
-            if(this.turn.player.Component)
-                this.turn.player.Component.walkTo(walk_to);
+            store.turn.moved = true;
+
+            console.log(this.player.name + ' has rolled a ' + this.steps + ' and will walk to ' + walk_to);
+
+            if(this.player.Component)
+                this.player.Component.walkTo(walk_to);
         },
 
         nextTurn() {
             console.log('next turn');
+
+            playAudio('roll-dice');
+
+            this.steps = 0;
 
             // logs last turn
             store.turns.push(store.turn);
@@ -79,8 +129,11 @@ export default {
                 return this.nextTurn();
         },
 
-        quitGame() {
-            this.Game.quitGame();
+        executeRule() {
+            if(store.turn.rule){
+                store.turn.rule.action(this.player.Component);
+                store.turn.rule = false;
+            }
         }
     }
 }
@@ -105,6 +158,7 @@ table {
     margin: auto;
     margin-top: 17px;
     margin-bottom: 15px;
+    max-height: 48px;
 }
 
 .Player img {

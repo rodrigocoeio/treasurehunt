@@ -55,6 +55,8 @@ export default {
     startGame() {
       console.log('start game');
 
+      playAudio('started');
+
       store.started = true;
       store.turn.started = false;
       store.turn.completed = false;
@@ -66,6 +68,8 @@ export default {
 
     quitGame() {
       console.log('quit game');
+
+      playAudio('quited');
 
       store.started = false;
       store.configs.players=0;

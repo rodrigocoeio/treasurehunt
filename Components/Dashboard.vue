@@ -1,10 +1,15 @@
 <template>
     <div class="GameDashboard">
-        <h5>Turn Nº{{ turn.turn }}</h5>
-        <h6 :class="['PlayerName']" v-for="player in sortedPlayers">
-            <img :src="player.image" height="24">
-            {{ player.name }}
-            {{ player.steps }}
+        <!-- <h5>Turn Nº{{ turn.turn }}</h5> -->
+
+        <h6 :class="['player-name', turn.player == player ? 'selected' : '']" v-for="player in sortedPlayers">
+            <span class="player-name">
+                <img :src="player.image" class="player-image">
+                |
+                {{ player.name }}
+                |
+                {{ player.steps }}
+            </span>
         </h6>
     </div>
 </template>
@@ -16,6 +21,7 @@ export default {
     data() {
         return store
     },
+    
 
     computed: {
         sortedPlayers() {
@@ -25,3 +31,22 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    .player-name {
+        font-size:14px;
+    }
+    
+    .player-image {
+        height: 24px;
+    }
+
+    .selected .player-name {
+        color: red;
+        font-size:20px;
+    }
+
+    .selected .player-image {
+        height: 48px;
+    }
+</style>

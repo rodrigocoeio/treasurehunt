@@ -5,16 +5,14 @@
 
     <table width="100%">
         <tr>
-            <td text-align="center">
-                <Dashboard v-if="started"></Dashboard>
-            </td>
             <td>
                 <Board col="7" rows="5" ref="board" v-if="started">
                     <Player v-for="player in players" :player="player" ref="players"></Player>
                 </Board>
             </td>
-            <td>
-                <Dice ref="dice" v-if="started"></Dice>
+            <td v-if="started">
+                <Dice ref="dice" ></Dice>
+                <Dashboard ref="dashboard"></Dashboard>
             </td>
         </tr>
     </table>    
@@ -51,6 +49,10 @@ export default {
 body {
     text-align: center;
     padding-top: 70px;
+}
+
+td {
+    vertical-align: top;
 }
 
 #game-canvas {

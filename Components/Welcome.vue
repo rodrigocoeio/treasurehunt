@@ -3,7 +3,7 @@
 
     </div>
 
-    <div id="game-canvas" class="container"></div>
+    <div id="game-canvas" class="container" @click="startMusic"></div>
 </template>
 
 <script>
@@ -16,6 +16,7 @@ export default {
     data() {
         return {
             background: false,
+            background_audio: false,
             players_available: [
                 {
                     name: "Pirate",
@@ -41,7 +42,7 @@ export default {
                     welcome: {
                         position: {x:480,y:500}
                     },
-                    position: {x:60,y:100},
+                    position: {x:63,y:100},
                     scale: 0.5
                 },
                 {
@@ -51,7 +52,7 @@ export default {
                         position: {x:600,y:170},
                         scale: 0.5
                     },
-                    position: {x:90,y:20},
+                    position: {x:93,y:24},
                     scale: 0.2
                 },
                 {
@@ -68,7 +69,29 @@ export default {
         }
     },
 
+    mounted() {
+        this.startMusic();
+    },
+
+    beforeUnmount() {
+        this.stopMusic();
+    },
+
     methods: {
+        startMusic() {
+            if(!this.background_audio)
+                this.background_audio = playAudio('forest-background');
+
+            this.background_audio.volume = 0.2;
+            this.background_audio.play();
+        },
+        stopMusic() {
+            if(this.background_audio)
+            {
+                this.background_audio.pause(); 
+                this.background_audio = false;
+            }
+        },
         preload(PhaserGame) {
             PhaserGame.load.image('background', 'images/background.png');
             PhaserGame.load.image('logo', 'images/treasurehunt.png');
@@ -121,11 +144,13 @@ export default {
                 if(!player.selected){
                     Welcome.selectPlayer(PhaserGame,player,playerConfigs);
                     player.selected = true;
-                }                
+                }
             });
             return player;
         },
         selectPlayer(PhaserGame, player, playerConfigs) {
+            playAudio('selected');
+
             const x = playerConfigs.welcome.position.x;
             const y = playerConfigs.welcome.position.y;
             player.text = PhaserGame.add.text(x - 100, y+40, playerConfigs.name, { fontSize: 40, color: 'white', backgroundColor: 'black', fontWeight: 'bold'});
