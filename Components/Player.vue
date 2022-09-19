@@ -112,7 +112,7 @@ export default {
 
         walkTo(walk_to, speed = 200) {
             // prevents from player walking to tile that does not exist
-            this.walk_to = (parseInt(walk_to)>store.configs.tiles.length) 
+            this.walk_to = (parseInt(walk_to) > (store.configs.tiles.length - 1)) 
                             ? (store.configs.tiles.length - 1)
                             : parseInt(walk_to);
             this.walk_speed = speed;

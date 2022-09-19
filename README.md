@@ -73,6 +73,9 @@ https://www.codeandweb.com/
 Phaser Examples
 https://github.com/photonstorm/phaser3-examples
 
+Node Windows ( run Node.js application as Windows Service in background )
+https://github.com/coreybutler/node-windows
+
 ---------------------------------------------------------
 NOTAS DE DESENVOLVIMENTO
 ----------------------------------------------------------

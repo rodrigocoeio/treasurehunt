@@ -55,7 +55,9 @@ export default {
     startGame() {
       console.log('start game');
 
-      playAudio('started');
+      const audio = playAudio('started');
+      audio.volume=0.4
+      audio.play();
 
       store.started = true;
       store.turn.started = false;
