@@ -29,6 +29,7 @@
                 console.log('board created');
                 // Board
                 this.board = PhaserGame.add.image(this.configs.width / 2, this.configs.height / 2, 'board');
+                this.board.setAlpha(0.7);
             },
             update(PhaserGame) {
                 

@@ -25,6 +25,8 @@ export default {
 
     mounted() {
         this.player.Component = this;
+
+        dd(this);
     },
 
     computed: {
@@ -59,32 +61,67 @@ export default {
                     //  before it is considered as being there. The faster it moves, the more tolerance is required.
                     if (distance < 4) {
                         const tile = this.target.tile;
+
                         this.Player.body.reset(this.target.x, this.target.y);
-                        if(tile.rule)
-                            tile.rule(this);
-                        else
-                            store.turn.completed = true;
+                        this.target = false;
+
+                        if (typeof this.walk_to == "number") {
+                            if (this.walk_to != this.player.steps)
+                                return this.walkTo(this.walk_to);
+
+                            this.walk_to = false;
+                        }
+
+                        if (tile.rule)
+                            return tile.rule(this);
+
+                        return store.turn.completed = true;
                     }
                 }
             }
         },
 
-        move(steps) {
-            this.player.steps += steps;
+        moveTo(to, speed = 200) {
             const x = this.player.position ? this.player.position.x : 0;
             const y = this.player.position ? this.player.position.y : 0;
-            const tile = store.configs.tiles[this.player.steps] ? store.configs.tiles[this.player.steps] : false;
+            const tile = store.configs.tiles[to] ? store.configs.tiles[to] : false;
+            const firstTile = store.configs.tiles[0];
+            
             this.target = {
-                x: tile ? (tile.x + x) : 768,
-                y: tile ? (tile.y + y) : 520,
+                x: tile ? (tile.x + x) : firstTile.x,
+                y: tile ? (tile.y + y) : firstTile.y,
                 tile: tile
             };
-            this.physics.moveToObject(this.Player, this.target, 200);
+
+            this.player.steps = to;
+            this.physics.moveToObject(this.Player, this.target, speed);
+        },
+
+        walkTo(walk_to) {
+            this.walk_to = parseInt(walk_to);
+
+            const next_tile = (this.walk_to > this.player.steps) ? this.player.steps + 1
+                            : (this.walk_to < this.player.steps) ? this.player.steps - 1
+                            : this.player.steps;
+
+            //const log = this.player.name + " is walking to: " + this.walk_to + ", next tile: " + next_tile;
+            //dd(log);
+
+            return this.moveTo(next_tile);
+
+        },
+
+        goFoward(steps) {
+            const go_to = this.player.steps + steps;
+            return this.walkTo(go_to);
+        },
+        goBack(steps) {
+            const go_to = this.player.steps - steps;
+            return this.walkTo(go_to);
         },
 
         startOver() {
-            this.player.steps = 0;
-            this.move(0);
+            this.walkTo(0);
         }
     }
 }

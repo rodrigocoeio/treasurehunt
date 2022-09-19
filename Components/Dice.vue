@@ -8,7 +8,7 @@
         <img v-if="turn.started" :src="diceImage" class="Dice">
 
         <button v-if="!turn.started" @click="throwDice" class="ThrowDiceButton btn btn-primary">
-            Throw <img src="/images/dice/dice.png" height="24">
+            Roll <img src="/images/dice/dice.png" height="24">
         </button>
         <button v-if="turn.started" :disabled="!turn.completed" @click="nextTurn" class="NextTurnButton btn btn-primary">
             Next <img src="/images/signnext.png" height="24">
@@ -42,33 +42,41 @@ export default {
 
         throwDice() {
             const steps = Math.floor(Math.random() * 6) + 1;
-            const player_number = this.turn.player_number;
-
-            this.turn.player = this.players[(player_number - 1)];
+            const player_number = (this.turn.player_number - 1);
+            const player = this.players[player_number];
+            const walk_to = player.steps + steps;
             
+            this.turn.player = player;
             this.turn.steps = steps;
             this.turn.started = true;
             this.turn.completed = false;
 
+            console.log(player.name + ' has rolled a ' + steps + ' and will walk to ' + walk_to);
+
             if(this.turn.player.Component)
-                this.turn.player.Component.move(steps);
+                this.turn.player.Component.walkTo(walk_to);
         },
 
         nextTurn() {
             console.log('next turn');
+
+            // logs last turn
+            store.turns.push(store.turn);
 
             store.turn.turn++;
 
             if (store.turn.player_number >= store.configs.players) {
                 store.turn.player = store.players[0];
                 store.turn.player_number = 1;
-                store.turns.push(store.turn);
             } else {
                 store.turn.player = store.players[store.turn.player_number];
                 store.turn.player_number++;
             }
 
             store.turn.started = false;
+
+            if(store.turn.player.finished)
+                return this.nextTurn();
         },
 
         quitGame() {
