@@ -26,7 +26,8 @@ export default {
     computed: {
         sortedPlayers() {
             const players = store.players;
-            return sortByKey([...players], 'steps');
+            //return sortByKey([...players], 'steps');
+            return players;
         }
     }
 }
@@ -35,6 +36,7 @@ export default {
 <style scoped>
     .player-name {
         font-size:14px;
+        font-weight: normal;
     }
     
     .player-image {
@@ -42,8 +44,8 @@ export default {
     }
 
     .selected .player-name {
-        color: red;
-        font-size:20px;
+        font-size:16px;
+        font-weight: bold;
     }
 
     .selected .player-image {

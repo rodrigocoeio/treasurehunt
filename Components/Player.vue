@@ -38,6 +38,9 @@ export default {
     methods: {
         preload(PhaserGame) {
             PhaserGame.load.image(this.player.name, this.player.image);
+
+            let image = new Image();
+                image.src = this.player.image;
         },
 
         create(PhaserGame) {

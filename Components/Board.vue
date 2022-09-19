@@ -3,7 +3,7 @@
         <slot></slot>
     </div>
 
-    <div id="game-canvas" class="container"></div>
+    <div id="game-canvas"></div>
 </template>
 
 <script>
@@ -63,3 +63,9 @@ export default
         }
     }
 </script>
+
+<style scoped>
+    #game-canvas {
+        width: 894px;
+    }
+</style>

@@ -5,7 +5,7 @@
 
     <table width="100%">
         <tr>
-            <td>
+            <td width="894" v-if="started">
                 <Board col="7" rows="5" ref="board" v-if="started">
                     <Player v-for="player in players" :player="player" ref="players"></Player>
                 </Board>
@@ -51,8 +51,15 @@ body {
     padding-top: 70px;
 }
 
+table {
+    margin: 0px;
+    padding: 0x;
+}
+
 td {
     vertical-align: top;
+    margin: 0px;
+    padding: 0x;
 }
 
 #game-canvas {

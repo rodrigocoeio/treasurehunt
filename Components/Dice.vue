@@ -62,6 +62,10 @@ export default {
             return store.players;
         }
     },
+
+    mounted() {
+        this.preload();
+    },
     methods: {
         preload() {
             console.log('preloading dice');
@@ -151,6 +155,7 @@ table {
     font-size: 16px;
     font-weight: bold;
     text-align: center;
+    min-height: 200px;
 }
 
 .Dice {
