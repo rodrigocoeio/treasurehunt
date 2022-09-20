@@ -32,7 +32,7 @@ export default
         methods: {
             startMusic() {
                 if (!this.background_audio)
-                    this.background_audio = playAudio('board-background');
+                    this.background_audio = playAudio('board-background2');
 
                 this.background_audio.volume = 0.5;
                 this.background_audio.loop = true;
