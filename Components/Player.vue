@@ -18,6 +18,8 @@ export default {
         return {
             Game: Game,
             Player: false,
+            Shadow: false,
+            shadowDistance: 2,
             moving: false,
             start_position: false
         }
@@ -46,13 +48,22 @@ export default {
         create(PhaserGame) {
             const x = this.player.position ? this.player.position.x : 0;
             const y = this.player.position ? this.player.position.y : 0;
-            const player = PhaserGame.physics.add.sprite(x, y, this.player.name);
+            const shadow = PhaserGame.physics.add.sprite(x, y, this.player.name);
+            const player = PhaserGame.physics.add.sprite((x + this.shadowDistance), (y + this.shadowDistance), this.player.name);
+
+            shadow.setOrigin(0.5);
+            shadow.tint = 0x000000;
+            shadow.alpha = 0.5;
 
             if (this.player.scale)
+            {
                 player.setScale(this.player.scale);
+                shadow.setScale(this.player.scale);
+            }
 
             this.physics = PhaserGame.physics;
             this.Player = player;
+            this.Shadow = shadow;
         },
 
         update(PhaserGame) {
@@ -66,6 +77,7 @@ export default {
                         const tile = this.target.tile;
 
                         this.Player.body.reset(this.target.x, this.target.y);
+                        this.Shadow.body.reset((this.target.x + this.shadowDistance), (this.target.y + this.shadowDistance) );
                         this.target = false;
 
                         if (typeof this.walk_to == "number") {
@@ -82,7 +94,6 @@ export default {
                             return store.turn.rule = tile.rule;
                         }
                             
-
                         return store.turn.completed = true;
                     }
                 }
@@ -103,6 +114,7 @@ export default {
 
                 this.player.steps = to;
                 this.physics.moveToObject(this.Player, this.target, speed);
+                this.physics.moveToObject(this.Shadow, this.target, speed);
 
                 return true;
             }
