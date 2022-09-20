@@ -62,7 +62,7 @@ export default {
                 if (this.Player.body.speed > 0) {
                     //  4 is our distance tolerance, i.e. how close the source can get to the target
                     //  before it is considered as being there. The faster it moves, the more tolerance is required.
-                    if (distance < 4) {
+                    if (distance < 6) {
                         const tile = this.target.tile;
 
                         this.Player.body.reset(this.target.x, this.target.y);
@@ -143,7 +143,7 @@ export default {
         },
         startOver() {
             console.log(this.player.name + " is starting over");
-            this.walkTo(0, 400);
+            this.moveTo(0, 200);
         },
         finished() {
             console.log(this.player.name + " has finished");

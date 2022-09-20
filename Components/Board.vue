@@ -35,6 +35,7 @@ export default
                     this.background_audio = playAudio('board-background');
 
                 this.background_audio.volume = 0.5;
+                this.background_audio.loop = true;
                 this.background_audio.play();
             },
             stopMusic() {

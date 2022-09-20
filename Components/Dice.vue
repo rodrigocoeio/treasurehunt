@@ -1,11 +1,11 @@
 <template>
     <div class="GameDice">
-        <div class="Player" v-if="!turn.started">
+        <div class="Player">
             <img :src="playerImage">
             <h5>{{ turn.player.name }}</h5>
         </div>
 
-        <img v-if="turn.started" :src="diceImage" class="Dice">
+        <img :src="diceImage" class="Dice">
 
         <button v-if="rollButton" :disabled="(turn.started && !turn.completed)" @click="throwDice" class="ThrowDiceButton btn btn-primary">
             Roll <img src="/images/dice/dice.png" height="24">
@@ -156,6 +156,7 @@ table {
     font-weight: bold;
     text-align: center;
     min-height: 200px;
+    margin-bottom: 15px;
 }
 
 .Dice {
@@ -163,7 +164,7 @@ table {
     margin: auto;
     margin-top: 17px;
     margin-bottom: 15px;
-    max-height: 48px;
+    max-height: 64px;
 }
 
 .Player img {
