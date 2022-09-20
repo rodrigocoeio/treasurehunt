@@ -50,7 +50,7 @@ export default {
   data() {
     return store;
   },
-
+  
   methods: {
     startGame() {
       console.log('start game');

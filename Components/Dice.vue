@@ -7,7 +7,8 @@
 
         <img :src="diceImage" class="Dice">
 
-        <button v-if="rollButton" :disabled="(turn.started && !turn.completed)" @click="throwDice" class="ThrowDiceButton btn btn-primary">
+        <button v-if="rollButton" :disabled="(turn.started && !turn.completed)" @click="rollDice"
+            class="RollDiceButton btn btn-primary">
             Roll <img src="/images/dice/dice.png" height="24">
         </button>
         <button v-if="moveButton" @click="movePlayer" class="btn btn-primary">
@@ -47,7 +48,7 @@ export default {
             return (store.turn.started && store.turn.rule);
         },
         diceImage() {
-            if(this.steps)
+            if (this.steps)
                 return "/images/dice/" + this.steps + ".png";
 
             return "/images/dice/dice.png";
@@ -65,8 +66,22 @@ export default {
 
     mounted() {
         this.preload();
+        window.addEventListener("keypress", this.listenKeyBoardEvents);
     },
     methods: {
+        listenKeyBoardEvents(e) {
+            if (e.keyCode == 32 || e.keyCode == 13) {
+                dd(this.rollButton);
+                if (this.rollButton)
+                    return this.rollDice();
+                if (this.moveButton)
+                    return this.movePlayer();
+                if (this.nextButton && store.turn.completed)
+                    return this.nextTurn();
+                if (this.ruleButton)
+                    return this.executeRule();
+            }
+        },
         preload() {
             console.log('preloading dice');
             for (let i = 1; i <= 6; i++) {
@@ -75,11 +90,11 @@ export default {
             }
         },
 
-        throwDice() {
+        rollDice() {
             this.steps = Math.floor(Math.random() * 6) + 1;
 
             playAudio('dice');
-            playAudio('dice-'+this.steps);
+            playAudio('dice-' + this.steps);
 
             console.log(this.player.name + " has rolled a " + this.steps);
 
@@ -103,7 +118,7 @@ export default {
 
             console.log(this.player.name + ' has rolled a ' + this.steps + ' and will walk to ' + walk_to);
 
-            if(this.player.Component)
+            if (this.player.Component)
                 this.player.Component.walkTo(walk_to);
         },
 
@@ -129,12 +144,12 @@ export default {
 
             store.turn.started = false;
 
-            if(store.turn.player.finished)
+            if (store.turn.player.finished)
                 return this.nextTurn();
         },
 
         executeRule() {
-            if(store.turn.rule){
+            if (store.turn.rule) {
                 store.turn.rule.action(this.player.Component);
                 store.turn.rule = false;
             }
