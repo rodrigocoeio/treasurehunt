@@ -95,6 +95,7 @@ table {
     padding: 0x;
     border-right: 0.1px solid #ccc;
     border-left: 0.1px solid #ccc;
+    min-width: 1164px;
 }
 
 td {

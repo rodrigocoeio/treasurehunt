@@ -7,9 +7,9 @@
             <thead>
                 <tr>
                     <th width="25">#</th>
+                    <th>Player</th>
                     <th></th>
-                    <th></th>
-                    <th>Position</th>
+                    <th v-if="started">Position</th>
                 </tr>
             </thead>
 
@@ -22,7 +22,7 @@
                     <td class="player-name">
                         {{ player.name }}
                     </td>
-                    <td align="center" class="player-name">{{ player.steps }}</td>
+                    <td v-if="started" align="center" class="player-name">{{ player.steps }}</td>
                 </tr>
             </tbody>
         </table>
@@ -56,7 +56,7 @@ export default {
 }
 
 .player-name {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: normal;
 }
 
@@ -65,7 +65,7 @@ export default {
 }
 
 .selected .player-name {
-    font-size: 16px;
+    font-size: 24px;
     font-weight: bold;
 }
 
