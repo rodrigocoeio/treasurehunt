@@ -19,7 +19,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
           <!-- Select Players -->
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <select v-model="configs.players" class="form-select" disabled="true">
               <option value="0" selected>Choose Players</option>
               <option value="1">Single Player</option>
@@ -28,7 +28,7 @@
               <option value="4">Four Players</option>
               <option value="5">Five Players</option>
             </select>
-          </li>
+          </li> -->
 
           <!-- Start Game -->
           <li class="nav-item" v-show="!started">

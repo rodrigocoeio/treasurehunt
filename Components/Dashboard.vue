@@ -56,7 +56,7 @@ export default {
 }
 
 .player-name {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: normal;
 }
 

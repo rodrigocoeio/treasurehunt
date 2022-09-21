@@ -82,7 +82,8 @@ export default {
     methods: {
         listenKeyBoardEvents(e) {
             if (e.keyCode == 32 || e.keyCode == 13) {
-                this.$parent.start();
+                if(!store.started)
+                    this.$parent.start();
             }
         },
         startMusic() {
