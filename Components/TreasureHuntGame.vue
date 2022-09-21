@@ -28,9 +28,33 @@ import Player from "./Player.vue";
 import Tile from "../components/Tile.vue";
 import Dashboard from "../components/Dashboard.vue";
 
+window.playAudio = (audio_name,extension="mp3") => {
+    var audio = new Audio("/audio/" + audio_name + "." + extension);
+    audio.play();
+    audio.muted = !store.configs.sound;
+    return audio;
+}
+
 export default {
     data() {
         return store
+    },
+
+    watch: {
+        "configs.sound": function(val) {
+            if(val){
+                if(this.$refs.board)
+                    this.$refs.board.startMusic();
+                if(this.$refs.welcome)
+                    this.$refs.welcome.startMusic();
+            }
+            else {
+                if(this.$refs.board)
+                    this.$refs.board.stopMusic();
+                if(this.$refs.welcome)
+                    this.$refs.welcome.stopMusic();
+            }
+        }
     },
 
     components: {

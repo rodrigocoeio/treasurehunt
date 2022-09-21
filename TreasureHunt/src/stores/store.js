@@ -46,6 +46,7 @@ const state = {
     width: 894,
     height: 651,
     players: 0,
+    sound: true,
     tiles: [
 
       // Row 1

@@ -17,10 +17,3 @@ window.sortByKey = (array, key, order='asc') =>  {
         return ((x < y) ? -1 : ((x > y) ? 1 : 0));
     });
 }
-
-window.playAudio = (audio_name,extension="mp3") => {
-    var audio = new Audio("/audio/" + audio_name + "." + extension);
-    audio.play();
-
-    return audio;
-}

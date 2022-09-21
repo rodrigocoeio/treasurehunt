@@ -9,7 +9,9 @@
       <!-- Navbar Toogler -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <a class="navbar-brand" href="#">
+          <img src="images/treasurechest.png">
+        </a>
       </button>
 
       <!-- Navbar -->
@@ -28,14 +30,22 @@
             </select>
           </li>
 
+          <!-- Game Sound -->
+          <li class="nav-item">
+            <div class="game-sound form-check form-switch">
+              <input class="form-check-input" type="checkbox" name="sound" id="sound" v-model="configs.sound">
+              <label for="sound">Sound</label>
+            </div>
+          </li>
+
           <!-- Start Game -->
           <li class="nav-item" v-show="!started">
-            <button @click="startGame" :disabled="configs.players===0" class="btn btn-primary">Start Game</button>
+            <button @click="startGame" :disabled="configs.players===0" class="start-game btn btn-primary">Start Game</button>
           </li>
 
           <!-- Quit Game -->
           <li class="nav-item" v-show="started">
-            <button @click="quitGame" class="btn btn-danger">Quit Game</button>
+            <button @click="quitGame" class="quit-game btn btn-danger">Quit Game</button>
           </li>
         </ul>
       </div>
@@ -88,11 +98,23 @@ export default {
 
   button {
       margin-left: 15px;
+      cursor: pointer;
   }
 
   .navbar {
       position: absolute;
       top: 0px;
       left: calc(50% - 150px);
+  }
+
+  .game-sound {
+    margin-left: 15px;
+    margin-top: 7px;
+    cursor: pointer;
+  }
+
+  .game-sound label, .game-sound input {
+    display:block;
+    cursor: pointer;
   }
 </style>

@@ -71,7 +71,6 @@ export default {
     methods: {
         listenKeyBoardEvents(e) {
             if (e.keyCode == 32 || e.keyCode == 13) {
-                dd(this.rollButton);
                 if (this.rollButton)
                     return this.rollDice();
                 if (this.moveButton)
@@ -83,13 +82,11 @@ export default {
             }
         },
         preload() {
-            console.log('preloading dice');
             for (let i = 1; i <= 6; i++) {
                 let image = new Image();
                 image.src = "/images/dice/" + i + ".png";
             }
         },
-
         rollDice() {
             this.steps = Math.floor(Math.random() * 6) + 1;
 
@@ -100,7 +97,6 @@ export default {
 
             this.startTurn();
         },
-
         startTurn() {
             const player_number = (this.turn.player_number - 1);
             const player = this.players[player_number];
@@ -110,7 +106,6 @@ export default {
             store.turn.moved = false;
             store.turn.completed = false;
         },
-
         movePlayer() {
             const walk_to = this.player.steps + this.steps;
 
@@ -121,7 +116,6 @@ export default {
             if (this.player.Component)
                 this.player.Component.walkTo(walk_to);
         },
-
         nextTurn() {
             console.log('next turn');
 
@@ -147,7 +141,6 @@ export default {
             if (store.turn.player.finished)
                 return this.nextTurn();
         },
-
         executeRule() {
             if (store.turn.rule) {
                 store.turn.rule.action(this.player.Component);
