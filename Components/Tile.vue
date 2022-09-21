@@ -3,11 +3,15 @@
 </template>
 
 <script>
-    import store from "$/store.js";
-    import objectMixins from "@/mixins/object-mixins.js";
+import store from "$/store.js";
+import objectMixins from "@/mixins/object-mixins.js";
 
-    export default {
-        props: ['number','x','y'],
-        mixins: objectMixins
+export default {
+    props: ['number', 'x', 'y'],
+    mixins: objectMixins,
+
+    methods: {
+
     }
+}
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-light">
+  <nav class="navbar navbar-expand-lg bg-light" v-show="configs.menu">
     <div class="container-fluid">
       <!-- Chest Logo -->
       <a class="navbar-brand" href="#">
@@ -30,14 +30,6 @@
             </select>
           </li>
 
-          <!-- Game Sound -->
-          <li class="nav-item">
-            <div class="game-sound form-check form-switch">
-              <input class="form-check-input" type="checkbox" name="sound" id="sound" v-model="configs.sound">
-              <label for="sound">Sound</label>
-            </div>
-          </li>
-
           <!-- Start Game -->
           <li class="nav-item" v-show="!started">
             <button @click="startGame" :disabled="configs.players===0" class="start-game btn btn-primary">Start Game</button>
@@ -46,6 +38,16 @@
           <!-- Quit Game -->
           <li class="nav-item" v-show="started">
             <button @click="quitGame" class="quit-game btn btn-danger">Quit Game</button>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <!-- Game Sound -->
+          <li class="nav-item">
+            <div class="game-sound form-check form-switch">
+              <input class="form-check-input" type="checkbox" name="sound" id="sound" v-model="configs.sound">
+              <label for="sound">Sound</label>
+            </div>
           </li>
         </ul>
       </div>
@@ -64,6 +66,9 @@ export default {
   methods: {
     startGame() {
       console.log('start game');
+
+      if(this.players.length===0)
+        return false;
 
       const audio = playAudio('started');
       audio.volume=0.4
@@ -86,6 +91,8 @@ export default {
       store.started = false;
       store.configs.players=0;
       store.players = [];
+      store.turn.started  = false;
+      store.turn.player = false;
     }
   }
 }

@@ -1,8 +1,8 @@
 <template>
-    <table>
+    <table class="bg-light">
         <tr>
             <td colspan="100%">
-                <Controls></Controls>
+                <Menu ref="menu"></Menu>
             </td>
         </tr>
         <tr>
@@ -14,7 +14,13 @@
                 </Board>
             </td>
             <td>
-                <Dice ref="dice"></Dice>
+                <div class="bg-light" v-show="!configs.menu">
+                    <div class="hide-menu form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="hide-menu" id="hide-menu" v-model="configs.menu">
+                        <label for="hide-menu">Menu</label>
+                    </div>
+                </div>
+                <Dice ref="dice" v-if="started"></Dice>
                 <Dashboard ref="dashboard"></Dashboard>
             </td>
         </tr>
@@ -23,7 +29,7 @@
 
 <script>
 import store from "$/store.js";
-import Controls from "./Controls.vue";
+import Menu from "./Menu.vue";
 import Welcome from "./Welcome.vue";
 import Board from "./Board.vue";
 import Dice from "./Dice.vue";
@@ -31,6 +37,7 @@ import Player from "./Player.vue";
 import Tile from "../components/Tile.vue";
 import Dashboard from "../components/Dashboard.vue";
 
+window.store = store;
 window.playAudio = (audio_name,extension="mp3") => {
     var audio = new Audio("/audio/" + audio_name + "." + extension);
     audio.play();
@@ -60,9 +67,19 @@ export default {
         }
     },
 
+    methods: {
+        start() {
+            this.$refs.menu.startGame();
+        },
+
+        quit() {
+            this.$refs.menu.quitGame();
+        }
+    },
+
     components: {
         Welcome,
-        Controls,
+        Menu,
         Board,
         Dice,
         Player,
@@ -76,6 +93,8 @@ export default {
 table {
     margin: auto;
     padding: 0x;
+    border-right: 0.1px solid #ccc;
+    border-left: 0.1px solid #ccc;
 }
 
 td {

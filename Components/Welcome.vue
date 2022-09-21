@@ -71,13 +71,20 @@ export default {
 
     mounted() {
         this.startMusic();
+        window.addEventListener("keypress", this.listenKeyBoardEvents);
     },
 
     beforeUnmount() {
         this.stopMusic();
+        window.removeEventListener("keypress", this.listenKeyBoardEvents);
     },
 
     methods: {
+        listenKeyBoardEvents(e) {
+            if (e.keyCode == 32 || e.keyCode == 13) {
+                this.$parent.start();
+            }
+        },
         startMusic() {
             if(!this.background_audio)
                 this.background_audio = playAudio('forest-background');

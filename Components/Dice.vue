@@ -1,6 +1,6 @@
 <template>
-    <div class="GameDice">
-        <div class="Player">
+    <div class="GameDice bg-light">
+        <div class="Player" v-if="turn.player">
             <img :src="playerImage">
             <h5>{{ turn.player.name }}'s<br>turn</h5>
         </div>
@@ -70,6 +70,9 @@ export default {
     mounted() {
         this.preload();
         window.addEventListener("keypress", this.listenKeyBoardEvents);
+    },
+    beforeUnmount() {
+        window.removeEventListener("keypress", this.listenKeyBoardEvents);
     },
     methods: {
         listenKeyBoardEvents(e) {
@@ -163,6 +166,7 @@ table {
 }
 
 .GameDice {
+    padding: 15px;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
