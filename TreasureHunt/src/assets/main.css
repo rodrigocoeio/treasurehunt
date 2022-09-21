@@ -1,1 +1,9 @@
 @import "./base.css";
+
+body {
+    text-align: center;
+}
+
+img.disabled {
+    opacity: 0.5;
+}

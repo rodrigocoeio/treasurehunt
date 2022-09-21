@@ -1,17 +1,20 @@
 <template>
-    <Controls></Controls>
-
-    <Welcome ref="welcome" v-if="!started"></Welcome>
-
-    <table width="100%">
+    <table>
         <tr>
-            <td width="894" v-if="started">
+            <td colspan="100%">
+                <Controls></Controls>
+            </td>
+        </tr>
+        <tr>
+            <td width="894">
+                <Welcome ref="welcome" v-if="!started"></Welcome>
+                
                 <Board col="7" rows="5" ref="board" v-if="started">
                     <Player v-for="player in players" :player="player" ref="players"></Player>
                 </Board>
             </td>
-            <td v-if="started">
-                <Dice ref="dice" ></Dice>
+            <td>
+                <Dice ref="dice"></Dice>
                 <Dashboard ref="dashboard"></Dashboard>
             </td>
         </tr>
@@ -70,13 +73,8 @@ export default {
 </script>
 
 <style>
-body {
-    text-align: center;
-    padding-top: 70px;
-}
-
 table {
-    margin: 0px;
+    margin: auto;
     padding: 0x;
 }
 

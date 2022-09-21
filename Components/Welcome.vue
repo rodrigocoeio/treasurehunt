@@ -145,6 +145,9 @@ export default {
                 if(!player.selected){
                     Welcome.selectPlayer(PhaserGame,player,playerConfigs);
                     player.selected = true;
+                } else {
+                    Welcome.unselectPlayer(PhaserGame,player,playerConfigs);
+                    player.selected = false;
                 }
             });
             return player;
@@ -171,6 +174,17 @@ export default {
                 finished: false
             });
         },
+        unselectPlayer(PhaserGame, player, playerConfigs) {
+            playAudio('selected');
+            const players = store.players.filter( p => p.name != playerConfigs.name );
+            store.configs.players--;
+            store.players = players;
+            player.setAlpha(0.6);
+            player.on('pointerout', function (event) {
+                this.setAlpha(0.6);
+            });
+            player.text.destroy();
+        },  
         update(PhaserGame) {
 
         }

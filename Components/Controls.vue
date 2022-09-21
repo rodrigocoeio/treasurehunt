@@ -102,9 +102,7 @@ export default {
   }
 
   .navbar {
-      position: absolute;
-      top: 0px;
-      left: calc(50% - 150px);
+      
   }
 
   .game-sound {

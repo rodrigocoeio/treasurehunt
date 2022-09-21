@@ -2,12 +2,12 @@
     <div class="GameDice">
         <div class="Player">
             <img :src="playerImage">
-            <h5>{{ turn.player.name }}</h5>
+            <h5>{{ turn.player.name }}'s<br>turn</h5>
         </div>
 
-        <img :src="diceImage" class="Dice">
+        <img :src="diceImage" class="Dice disabled">
 
-        <button v-if="rollButton" :disabled="(turn.started && !turn.completed)" @click="rollDice"
+        <button v-if="rollButton" :disabled="(turn.started && !turn.completed) || !started" @click="rollDice"
             class="RollDiceButton btn btn-primary">
             Roll <img src="/images/dice/dice.png" height="24">
         </button>
@@ -52,6 +52,9 @@ export default {
                 return "/images/dice/" + this.steps + ".png";
 
             return "/images/dice/dice.png";
+        },
+        started() {
+            return store.started
         },
         player() {
             return store.turn.player;
