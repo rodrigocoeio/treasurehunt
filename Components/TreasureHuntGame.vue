@@ -1,5 +1,5 @@
 <template>
-    <table class="bg-light">
+    <table class="bg-light" id="game">
         <tr>
             <td colspan="100%">
                 <Menu ref="menu"></Menu>
