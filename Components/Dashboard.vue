@@ -76,6 +76,6 @@ export default {
 th,
 td {
     vertical-align: middle;
-    padding: 5px;
+    padding: 3px;
 }
 </style>
