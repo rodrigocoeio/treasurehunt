@@ -1,35 +1,31 @@
 <template>
     <div class="GameDashboard bg-light">
-        <h5 v-show="sortedPlayers.length>0">Dashboard</h5>
-        <hr>
+        <!-- <h5 v-show="sortedPlayers.length>0">Dashboard</h5> -->
         <!-- <h5>Turn Nº{{ turn.turn }}</h5> -->
 
-        <h6>
-            <table class="player-name" v-if="players.length">
-                <thead>
-                    <tr>
-                        <th width="25">#</th>
-                        <th></th>
-                        <th></th>
-                        <th>Position</th>
-                    </tr>
-                </thead>
+        <table class="player-name" v-if="players.length">
+            <thead>
+                <tr>
+                    <th width="25">#</th>
+                    <th></th>
+                    <th></th>
+                    <th>Position</th>
+                </tr>
+            </thead>
 
-                <tbody>
-                    <tr :class="[turn.player == player ? 'selected' : '']"
-                        v-for="(player,index) in sortedPlayers">
-                        <td class="player-name">{{ index + 1 }}º</td>
-                        <td>
-                            <img :src="player.image" class="player-image">
-                        </td>
-                        <td class="player-name">
-                            {{ player.name }}
-                        </td>
-                        <td align="center" class="player-name">{{ player.steps }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </h6>
+            <tbody>
+                <tr :class="[turn.player == player ? 'selected' : '']" v-for="(player,index) in sortedPlayers">
+                    <td class="player-name">{{ index + 1 }}º</td>
+                    <td>
+                        <img :src="player.image" class="player-image">
+                    </td>
+                    <td class="player-name">
+                        {{ player.name }}
+                    </td>
+                    <td align="center" class="player-name">{{ player.steps }}</td>
+                </tr>
+            </tbody>
+        </table>
 
         <h6 v-show="sortedPlayers.length==0">Choose players...</h6>
     </div>
@@ -77,7 +73,9 @@ export default {
     height: 48px;
 }
 
+th,
 td {
     vertical-align: middle;
+    padding: 5px;
 }
 </style>
