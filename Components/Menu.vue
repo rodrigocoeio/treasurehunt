@@ -112,7 +112,7 @@ export default {
         (window.innerWidth == screen.width && window.innerHeight == screen.height))
         return this.exitFullScreen();
 
-      var game = document.getElementById("game");
+      var game = document.documentElement;
 
       /* When the openFullscreen() function is executed, open the video in fullscreen.
       Note that we must include prefixes for different browsers, as they don't support the requestFullscreen method yet */

@@ -2,7 +2,7 @@
     <div class="GameBoard">
         <slot></slot>
 
-        <tile :number="number" :x="tile.x" :y="tile.y" width="128" height="130" :rule="rule" v-for="tile in tiles"></tile>
+        <!-- <tile :number="number" :x="tile.x" :y="tile.y" width="128" height="130" :rule="rule" v-for="tile in tiles"></tile> -->
     </div>
 
     <div id="game-canvas"></div>

@@ -3,6 +3,8 @@
         <!-- <h5 v-show="sortedPlayers.length>0">Dashboard</h5> -->
         <!-- <h5>Turn Nº{{ turn.turn }}</h5> -->
 
+        <h6 v-show="players.length==0">Choose players...</h6>
+
         <table class="player-name" v-if="players.length">
             <thead>
                 <tr>
@@ -26,8 +28,6 @@
                 </tr>
             </tbody>
         </table>
-
-        <h6 v-show="sortedPlayers.length==0">Choose players...</h6>
     </div>
 </template>
 
@@ -71,6 +71,15 @@ export default {
 
 .selected .player-image {
     height: 48px;
+}
+
+h6 {
+    margin: auto;
+    text-align: center;
+}
+
+table {
+    margin: auto;
 }
 
 th,
