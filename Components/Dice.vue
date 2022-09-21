@@ -5,7 +5,7 @@
             <h5>{{ turn.player.name }}'s<br>turn</h5>
         </div>
 
-        <img :src="diceImage" class="Dice disabled">
+        <img :src="diceImage" class="Dice">
 
         <button v-if="rollButton" :disabled="(turn.started && !turn.completed) || !started" @click="rollDice"
             class="RollDiceButton btn btn-primary">
