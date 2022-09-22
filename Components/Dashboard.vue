@@ -64,6 +64,10 @@ export default {
     height: 24px;
 }
 
+.selected td {
+    background: #A6FF81;
+}
+
 .selected .player-name {
     font-size: 24px;
     font-weight: bold;
