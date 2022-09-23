@@ -1,0 +1,18 @@
+@import "./base.css";
+
+body {
+    text-align: center;
+    background-color:palegoldenrod;
+}
+
+img.disabled {
+    opacity: 0.5;
+}
+
+label {
+    cursor: pointer;
+}
+
+input {
+    cursor: pointer;
+}

@@ -19,10 +19,10 @@ https://bitbucket.org/rodrigocoeio/treasurehunt/src/main/
 INSTRUCTIONS
 ----------------------------------------------------------
 # RUN DEVELOPMENT MODE
-npm --prefix TreasureHunt run dev
+npm run dev
 
 # CHANGE HTTP HOST / PORT
-edit config in this file: ./TreasureHunt/vite.config.js
+edit config in this file: vite.config.js
 
 
 ---------------------------------------------------------
