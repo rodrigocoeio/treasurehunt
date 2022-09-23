@@ -7,6 +7,7 @@ const state = {
   configs: {        // Game Configs
     width: 894,
     height: 651,
+    difficulty: 'easy',
     players: 0,
     menu: true,
     sound: true,

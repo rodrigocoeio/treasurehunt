@@ -1,6 +1,6 @@
 <template>
     <div class="GameBoard">
-        <tile :number="tile.number" :x="tile.x" :y="tile.y" :image="tile.image" width="130" height="130" :rule="rule" v-for="tile in tiles"></tile>
+        <tile :number="tile.number" :x="tile.x" :y="tile.y" :image="tile.image" width="130" height="130" :rule="rule" v-for="tile in gameTiles"></tile>
         <slot></slot>
     </div>
 
@@ -19,15 +19,21 @@ export default
         data() {
             return {
                 board: false,
-                background_audio: false,
-                tiles: store.configs.tiles,
-                ...store
+                background_audio: false
             };
+        },
+
+        computed: {
+            gameTiles() {
+                const difficulty = store.configs.difficulty;
+                const tiles = store.configs.tiles[difficulty] ? store.configs.tiles[difficulty] : [];
+
+                return tiles;
+            }
         },
 
         mounted() {
             this.startMusic();
-            store.configs.tiles = this.tiles;
         },
 
         beforeUnmount() {
@@ -56,7 +62,7 @@ export default
             create(PhaserGame) {
                 console.log('board created');
                 // Board
-                this.board = PhaserGame.add.image(this.configs.width / 2, this.configs.height / 2, 'board');
+                this.board = PhaserGame.add.image(store.configs.width / 2, store.configs.height / 2, 'board');
                 //this.board.setAlpha(0.8);
             },
             update(PhaserGame) {

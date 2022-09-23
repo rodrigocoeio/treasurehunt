@@ -30,6 +30,17 @@
             </select>
           </li> -->
 
+          <!-- Difficulty -->
+          <li class="nav-item">
+            <select v-model="configs.difficulty" class="form-select" :disabled="started">
+              <option value="easy">Easy Mode</option>
+              <option value="normal">Normal Mode</option>
+              <option value="hard">Hard Mode</option>
+            </select>
+          </li>
+
+          
+
           <!-- Start Game -->
           <li class="nav-item" v-show="!started">
             <button @click="startGame" :disabled="configs.players===0" class="start-game btn btn-primary">Start
