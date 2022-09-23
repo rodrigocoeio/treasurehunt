@@ -1,3 +1,5 @@
+import tiles from "$/tiles.js";
+
 const state = {
   Phaser: false,    // Phaser Instance
   Game: false,      // Game Component
@@ -8,7 +10,7 @@ const state = {
     players: 0,
     menu: true,
     sound: true,
-    tiles: []
+    tiles: tiles
   },
   started: false,     //  Game Started
   finished: true,
