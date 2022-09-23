@@ -1,8 +1,7 @@
 <template>
     <div class="GameBoard">
+        <tile :number="tile.number" :x="tile.x" :y="tile.y" :image="tile.image" width="130" height="130" :rule="rule" v-for="tile in tiles"></tile>
         <slot></slot>
-
-        <!-- <tile :number="number" :x="tile.x" :y="tile.y" width="128" height="130" :rule="rule" v-for="tile in tiles"></tile> -->
     </div>
 
     <div id="game-canvas"></div>
@@ -64,68 +63,90 @@ export default
                 tiles: [
                     // Row 1
                     { number: 0, x: 0, y: 0 },
-                    { number: 1, x: 128, y: 0 },
-                    { number: 2, x: 256, y: 0 },
-                    { number: 3, x: 384, y: 0 },
+                    { number: 1, x: 128, y: 0,
+                        image: "/images/tiles/rock-island.png" 
+                    },
+                    { number: 2, x: 256, y: 0},
+                    { number: 3, x: 384, y: 0,
+                        image: "/images/tiles/rocks.png" 
+                    },
                     { number: 4, x: 512, y: 0 },
                     {
                         number: 5, x: 640, y: 0,
-                        rule: rules.goBack2
+                        rule: rules.goBack2,
+                        image: "/images/tiles/go-back-2-steps.png"
                     },
                     { number: 6, x: 772, y: 0 },
 
                     // Row 2
                     {
                         number: 7, x: 772, y: 130,
-                        rule: rules.goFoward2
+                        rule: rules.goFoward2,
+                        image: "/images/tiles/go-forward-2-steps.png"
                     },
                     { number: 8, x: 640, y: 130 },
                     { number: 9, x: 512, y: 130 },
                     {
                         number: 10, x: 384, y: 130,
-                        rule: rules.startOver
+                        rule: rules.startOver,
+                        image: "/images/tiles/start-again.png"
                     },
                     { number: 11, x: 256, y: 130 },
-                    { number: 12, x: 128, y: 130 },
+                    { number: 12, x: 128, y: 130,
+                        image: "/images/tiles/cabin.png" 
+                    },
                     { number: 13, x: 0, y: 130 },
 
                     // Row 3
                     { number: 14, x: 0, y: 260 },
                     {
                         number: 15, x: 128, y: 260,
-                        rule: rules.goBack2
+                        rule: rules.goBack2,
+                        image: "/images/tiles/go-back-2-steps.png"
                     },
                     { number: 16, x: 256, y: 260 },
-                    { number: 17, x: 384, y: 260 },
+                    { number: 17, x: 384, y: 260,
+                        image: "/images/tiles/rocks.png"
+                    },
                     { number: 18, x: 512, y: 260 },
                     {
                         number: 19, x: 640, y: 260,
-                        rule: rules.startOver
+                        rule: rules.startOver,
+                        image: "/images/tiles/start-again.png"
                     },
                     { number: 20, x: 772, y: 260 },
 
                     // Row 4
                     { number: 21, x: 772, y: 390 },
-                    { number: 22, x: 640, y: 390 },
+                    { number: 22, x: 640, y: 390,
+                        image: "/images/tiles/rock-island.png" 
+                    },
                     { number: 23, x: 512, y: 390 },
                     {
                         number: 24, x: 384, y: 390,
-                        rule: rules.goFoward2
+                        rule: rules.goFoward2,
+                        image: "/images/tiles/go-forward-2-steps.png"
                     },
                     { number: 25, x: 256, y: 390 },
-                    { number: 26, x: 128, y: 390 },
+                    { number: 26, x: 128, y: 390,
+                        image: "/images/tiles/island.png" 
+                    },
                     { number: 27, x: 0, y: 390 },
                     // Row 5
-                    { number: 28, x: 0, y: 520 },
+                    { number: 28, x: 0, y: 520,
+                        image: "/images/tiles/rocks.png" 
+                    },
                     { number: 29, x: 128, y: 520 },
                     {
                         number: 30, x: 256, y: 520,
-                        rule: rules.startOver
+                        rule: rules.startOver,
+                        image: "/images/tiles/start-again.png"
                     },
                     { number: 31, x: 384, y: 520 },
                     {
                         number: 32, x: 512, y: 520,
-                        rule: rules.goBack2
+                        rule: rules.goBack2,
+                        image: "/images/tiles/go-back-2-steps.png"
                     },
                     { number: 33, x: 640, y: 520 },
                     {
@@ -163,13 +184,13 @@ export default
             },
             preload(PhaserGame) {
                 // Background
-                PhaserGame.load.image('board', "/images/board.png");
+                PhaserGame.load.image('board', "/images/gameboard.png");
             },
             create(PhaserGame) {
                 console.log('board created');
                 // Board
                 this.board = PhaserGame.add.image(this.configs.width / 2, this.configs.height / 2, 'board');
-                this.board.setAlpha(0.5);
+                //this.board.setAlpha(0.8);
             },
             update(PhaserGame) {
 
@@ -189,5 +210,10 @@ export default
 <style scoped>
 #game-canvas {
     width: 894px;
+}
+canvas {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
 }
 </style>

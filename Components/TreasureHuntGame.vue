@@ -11,6 +11,8 @@
                 
                 <Board col="7" rows="5" ref="board" v-if="started">
                     <Player v-for="player in players" :player="player" ref="players"></Player>
+
+                    <!-- <Finished ref="finished" v-show="finished"></Finished> -->
                 </Board>
             </td>
             <td>
@@ -34,8 +36,9 @@ import Welcome from "./Welcome.vue";
 import Board from "./Board.vue";
 import Dice from "./Dice.vue";
 import Player from "./Player.vue";
-import Tile from "../components/Tile.vue";
-import Dashboard from "../components/Dashboard.vue";
+import Tile from "./Tile.vue";
+import Dashboard from "./Dashboard.vue";
+import Finished from "./Finished.vue";
 
 window.store = store;
 window.playAudio = (audio_name,extension="mp3") => {
@@ -84,7 +87,8 @@ export default {
         Dice,
         Player,
         Tile,
-        Dashboard
+        Dashboard,
+        Finished
     }
 }
 </script>

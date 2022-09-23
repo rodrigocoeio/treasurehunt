@@ -43,6 +43,14 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
+          <!-- Finished -->
+          <!-- <li class="nav-item">
+            <div class="game-sound form-check form-switch">
+              <input class="form-check-input" type="checkbox" name="finished" id="finished" v-model="finished">
+              <label for="finished">Finished</label>
+            </div>
+          </li> -->
+
           <!-- Game Sound -->
           <li class="nav-item">
             <div class="game-sound form-check form-switch">
@@ -125,6 +133,8 @@ export default {
       } else if (elem.msRequestFullscreen) { /* IE11 */
         game.msRequestFullscreen();
       }
+
+      $(game).focus();
     },
 
     exitFullScreen() {
@@ -135,6 +145,8 @@ export default {
       } else if (document.webkitExitFullscreen) {
         document.webkitExitFullscreen();
       }
+
+      $(document).focus();
     }
   }
 }

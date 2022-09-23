@@ -61,7 +61,7 @@ export default {
                     welcome: {
                         position: {x:200,y:200}
                     },
-                    position: {x:30,y:30},
+                    position: {x:33,y:33},
                     scale: 0.3
                 }
             ],

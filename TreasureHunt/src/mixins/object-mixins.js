@@ -10,8 +10,20 @@ export default [{
             destroyed: false
         };
     },
+    computed: {
+        isVisible() {
+            return true;
+        }
+    },
     mounted() {
         store.components.push(this);
+
+        if(!this.preloaded && store.Phaser.isRunning)
+        {
+            const scene = store.Phaser.scene.scenes[0];
+            this.preload(scene);
+            this.create(scene);
+        }
     },
     beforeUnmount() {
         if (store.Phaser && !this.destroyed)

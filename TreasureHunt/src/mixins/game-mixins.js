@@ -11,8 +11,6 @@ GameMixins.push({
     mounted() {
         store.Game = this;
 
-        console.log('game mounted ' + store.components.length)
-
         store.Phaser = Game(store.configs, this, store.components);
     },
 

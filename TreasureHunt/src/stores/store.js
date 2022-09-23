@@ -1,5 +1,3 @@
-
-
 const state = {
   Phaser: false,    // Phaser Instance
   Game: false,      // Game Component
@@ -13,6 +11,7 @@ const state = {
     tiles: []
   },
   started: false,     //  Game Started
+  finished: true,
   players: [],        //  Players
   turn: {             //  Turn
     turn: 1,
