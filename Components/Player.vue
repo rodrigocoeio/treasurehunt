@@ -103,7 +103,7 @@ export default {
         moveTo(to, speed = 200) {
             const player_x = this.player.position ? this.player.position.x : 0;
             const player_y = this.player.position ? this.player.position.y : 0;
-            const tile = store.configs.tiles[to] ? store.configs.tiles[to] : false;
+            const tile = store.tiles[to] ? store.tiles[to] : false;
             
             if(tile){
                 this.target = {

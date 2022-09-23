@@ -9,7 +9,7 @@ import store from "$/store.js";
 import objectMixins from "@/mixins/object-mixins.js";
 
 export default {
-    props: ['number','x', 'y','width','height','image'],
+    props: ['number','x', 'y','width','height','image','rule'],
     mixins: objectMixins,
 
     methods: {

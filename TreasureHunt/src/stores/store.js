@@ -16,6 +16,7 @@ const state = {
   started: false,     //  Game Started
   finished: true,
   players: [],        //  Players
+  tiles: [],          //  Tiles
   turn: {             //  Turn
     turn: 1,
     started: false,

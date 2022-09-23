@@ -1,6 +1,7 @@
 <template>
     <div class="GameBoard">
-        <tile :number="tile.number" :x="tile.x" :y="tile.y" :image="tile.image" width="130" height="130" :rule="rule" v-for="tile in gameTiles"></tile>
+        <tile :number="tile.number" :x="tile.x" :y="tile.y" :image="tile.image" width="130" height="130"
+            v-for="tile in gameTiles"></tile>
         <slot></slot>
     </div>
 
@@ -34,6 +35,8 @@ export default
 
         mounted() {
             this.startMusic();
+
+            store.tiles = this.gameTiles;
         },
 
         beforeUnmount() {
@@ -84,6 +87,7 @@ export default
 #game-canvas {
     width: 894px;
 }
+
 canvas {
     image-rendering: -moz-crisp-edges;
     image-rendering: -webkit-crisp-edges;

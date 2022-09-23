@@ -9,7 +9,7 @@
             <td width="894">
                 <Welcome ref="welcome" v-if="!started"></Welcome>
                 
-                <Board col="7" rows="5" ref="board" v-if="started">
+                <Board ref="board" v-if="started">
                     <Player v-for="player in players" :player="player" ref="players"></Player>
 
                     <!-- <Finished ref="finished" v-show="finished"></Finished> -->

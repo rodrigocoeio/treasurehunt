@@ -31,7 +31,8 @@ export default {
         return {
             rolling: false,
             steps: 0,
-            turn: store.turn
+            turn: store.turn,
+            next_cheat_steps: false
         };
     },
     computed: {
@@ -86,6 +87,35 @@ export default {
                 if (this.ruleButton)
                     return this.executeRule();
             }
+
+            if (this.rollButton)
+            {
+                let cheat_steps = false;
+
+                switch (e.keyCode) {
+                    case 49:
+                        cheat_steps = 1;
+                        break;
+                    case 50:
+                        cheat_steps = 2;
+                        break;
+                    case 51:
+                        cheat_steps = 3;
+                        break;
+                    case 52:
+                        cheat_steps = 4;
+                        break;
+                    case 53:
+                        cheat_steps = 5;
+                        break;
+                    case 54:
+                        cheat_steps = 6;
+                        break;
+                }
+
+                console.log("Cheat dice activated: " + cheat_steps);
+                this.next_cheat_steps = cheat_steps;
+            }
         },
         preload() {
             for (let i = 1; i <= 6; i++) {
@@ -94,7 +124,8 @@ export default {
             }
         },
         rollDice() {
-            this.steps = Math.floor(Math.random() * 6) + 1;
+            this.steps = this.next_cheat_steps ? this.next_cheat_steps : Math.floor(Math.random() * 6) + 1;
+            this.next_cheat_steps = false;
 
             playAudio('dice');
             playAudio('dice-' + this.steps);
