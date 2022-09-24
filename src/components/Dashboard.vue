@@ -10,7 +10,6 @@
                 <tr>
                     <th width="25">#</th>
                     <th>Player</th>
-                    <th></th>
                     <th v-if="started">Position</th>
                 </tr>
             </thead>
@@ -18,14 +17,22 @@
             <tbody>
                 <tr :class="[turn.player == player ? 'selected' : '']" v-for="(player,index) in sortedPlayers">
                     <td class="player-name">{{ index + 1 }}º</td>
-                    <td>
-                        <img :src="player.image" class="player-image">
-                    </td>
+             
                     <td class="player-name">
+                        <img :src="player.image" class="player-image">
                         {{ player.name }}
-                        <img src="/images/coin-silver.jpg" height="16">
-                        <img src="/images/coin-bronze.jpg" height="16">
-                        <img src="/images/coin-gold.jpg" height="16">
+
+                        <br>
+
+                        <div class="coin" v-for="count, coin in player.coins" v-show="count>0">
+                            <img :src="'/images/coin-' + coin + '.png'" height="24">
+                            <span>{{ count }}</span>
+                        </div>
+
+                        <div class="treasure" v-for="count, treasure in player.treasures" v-show="count>0">
+                            <img :src="'/images/treasures/' + treasure + '.png'" height="24">
+                            <span>{{ count }}</span>
+                        </div>
                     </td>
                     <td v-if="started" align="center" class="player-name">{{ player.steps }}</td>
                 </tr>
@@ -93,5 +100,29 @@ th,
 td {
     vertical-align: middle;
     padding: 3px;
+}
+
+.coin {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.treasure {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.coin span, .treasure span {
+    font-size: 20px;
+    color:white;
+    margin-top: -3px;
+    margin-left: -17px;
+    font-weight: bold;
+    -webkit-text-stroke: 1px black;
+    float: left;
+}
+
+.coin img, .treasure img {
+    float: left;
 }
 </style>

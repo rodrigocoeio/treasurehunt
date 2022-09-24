@@ -179,7 +179,18 @@ export default {
                 scale: playerConfigs.scale,
                 steps: 0,
                 walk: 0,
-                finished: false
+                finished: false,
+                coins: {
+                    bronze: 0,
+                    silver: 0,
+                    gold: 0
+                },
+                treasures: {
+                    ruby: 0,
+                    ring: 0,
+                    necklace: 0,
+                    crown: 0
+                }
             });
         },
         unselectPlayer(PhaserGame, player, playerConfigs) {

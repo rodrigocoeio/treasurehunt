@@ -42,7 +42,7 @@ export default {
             PhaserGame.load.image(this.player.name, this.player.image);
 
             let image = new Image();
-                image.src = this.player.image;
+            image.src = this.player.image;
         },
 
         create(PhaserGame) {
@@ -55,8 +55,7 @@ export default {
             shadow.tint = 0x000000;
             shadow.alpha = 0.5;
 
-            if (this.player.scale)
-            {
+            if (this.player.scale) {
                 player.setScale(this.player.scale);
                 shadow.setScale(this.player.scale);
             }
@@ -77,7 +76,7 @@ export default {
                         const tile = this.target.tile;
 
                         this.Player.body.reset(this.target.x, this.target.y);
-                        this.Shadow.body.reset((this.target.x + this.shadowDistance), (this.target.y + this.shadowDistance) );
+                        this.Shadow.body.reset((this.target.x + this.shadowDistance), (this.target.y + this.shadowDistance));
                         this.target = false;
 
                         if (typeof this.walk_to == "number") {
@@ -87,13 +86,13 @@ export default {
                             this.walk_to = false;
                         }
 
-                        if (tile.rule){
-                            if(tile.rule.trigger)
-                                tile.rule.trigger(this.player);
+                        if (tile.rule) {
+                            if (tile.rule.trigger)
+                                tile.rule.trigger(this.player, store.turn);
 
                             return store.turn.rule = tile.rule;
                         }
-                            
+
                         return store.turn.completed = true;
                     }
                 }
@@ -104,8 +103,8 @@ export default {
             const player_x = this.player.position ? this.player.position.x : 0;
             const player_y = this.player.position ? this.player.position.y : 0;
             const tile = store.tiles[to] ? store.tiles[to] : false;
-            
-            if(tile){
+
+            if (tile) {
                 this.target = {
                     x: (tile.x + player_x),
                     y: (tile.y + player_y),
@@ -118,26 +117,43 @@ export default {
 
                 return true;
             }
-            
-            throw Error("Error while moving player " + this.player.name + " to: " + to + " ( tile " + to + " does not exist )");            
+
+            throw Error("Error while moving player " + this.player.name + " to: " + to + " ( tile " + to + " does not exist )");
         },
 
         walkTo(walk_to, speed = 200) {
             // prevents from player walking to tile that does not exist
-            this.walk_to = (parseInt(walk_to) > (store.configs.tiles.length - 1)) 
-                            ? (store.configs.tiles.length - 1)
-                            : parseInt(walk_to);
+            this.walk_to = (parseInt(walk_to) > (store.configs.tiles.length - 1))
+                ? (store.configs.tiles.length - 1)
+                : parseInt(walk_to);
             this.walk_speed = speed;
 
             const next_tile = (this.walk_to > this.player.steps) ? this.player.steps + 1
-                            : (this.walk_to < this.player.steps) ? this.player.steps - 1
-                            : this.player.steps;
+                : (this.walk_to < this.player.steps) ? this.player.steps - 1
+                    : this.player.steps;
 
             const log = this.player.name + " is walking to: " + this.walk_to + ", next tile: " + next_tile;
             dd(log);
 
             return this.moveTo(next_tile, speed);
 
+        },
+
+        takeCoin(kind) {
+            console.log("Player " + this.player.name + " toke a " + kind + " coin");
+
+            this.player.coins[kind] = typeof this.player.coins[kind] != "number" ?
+                1 :
+                parseInt(this.player.coins[kind]) + 1;
+
+            playAudio('take-coin');
+        },
+        takeTreasure(kind) {
+            console.log("Player " + this.player.name + " toke a " + kind + " treasure");
+
+            this.player.treasures[kind] = typeof this.player.treasures[kind] != "number" ?
+                1 :
+                parseInt(this.player.treasures[kind]) + 1;
         },
         goFoward(steps) {
             const go_to = this.player.steps + steps;
@@ -156,10 +172,6 @@ export default {
         startOver() {
             console.log(this.player.name + " is starting over");
             this.moveTo(0, 200);
-        },
-        finished() {
-            console.log(this.player.name + " has finished");
-            this.moveTo(0);
         }
     }
 }

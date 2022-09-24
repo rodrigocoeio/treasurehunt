@@ -9,7 +9,7 @@
 
         <button v-if="rollButton" :disabled="(turn.started && !turn.completed) || !started" @click="rollDice"
             class="RollDiceButton btn btn-primary">
-            Roll <img src="/images/dice/dice.png" height="24">
+            Roll Dice <img src="/images/dice/dice.png" height="24">
         </button>
         <button v-if="moveButton" @click="movePlayer" class="btn btn-primary">
             Move <img src="/images/signnext.png" height="24">
@@ -18,7 +18,7 @@
             {{ turn.rule.name }}
         </button>
         <button v-if="nextButton" :disabled="!turn.completed" @click="nextTurn" class="NextTurnButton btn btn-primary">
-            Next <img src="/images/signnext.png" height="24">
+            Next Turn 
         </button>
     </div>
 </template>
@@ -49,6 +49,12 @@ export default {
             return (store.turn.started && store.turn.rule);
         },
         diceImage() {
+            if (this.ruleButton && store.turn.rule.image)
+                return store.turn.rule.image;
+
+            if  (this.nextButton)
+                return "/images/signnext.png";
+                
             if (this.steps)
                 return "/images/dice/" + this.steps + ".png";
 
@@ -180,8 +186,7 @@ export default {
         },
         executeRule() {
             if (store.turn.rule) {
-                store.turn.rule.action(this.player.Component);
-                store.turn.rule = false;
+                store.turn.rule = store.turn.rule.action(this.player.Component, store.turn);
             }
         }
     }
@@ -214,7 +219,7 @@ table {
 }
 
 .Player img {
-    max-height: 63px;
+    max-height: 64px;
 }
 
 button {
