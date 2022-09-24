@@ -10,6 +10,7 @@
                 <tr>
                     <th width="25">#</th>
                     <th>Player</th>
+                    <th>Treasures</th>
                     <th v-if="started">Position</th>
                 </tr>
             </thead>
@@ -21,9 +22,8 @@
                     <td class="player-name">
                         <img :src="player.image" class="player-image">
                         {{ player.name }}
-
-                        <br>
-
+                    </td>
+                    <td>
                         <div class="coin" v-for="count, coin in player.coins" v-show="count>0">
                             <img :src="'/images/coin-' + coin + '.png'" height="24">
                             <span>{{ count }}</span>
