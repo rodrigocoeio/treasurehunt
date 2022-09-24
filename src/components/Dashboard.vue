@@ -23,6 +23,9 @@
                     </td>
                     <td class="player-name">
                         {{ player.name }}
+                        <img src="/images/coin-silver.jpg" height="16">
+                        <img src="/images/coin-bronze.jpg" height="16">
+                        <img src="/images/coin-gold.jpg" height="16">
                     </td>
                     <td v-if="started" align="center" class="player-name">{{ player.steps }}</td>
                 </tr>

@@ -28,7 +28,7 @@ export default {
                     scale: 0.2
                 },
                 {
-                    name: "Dinosaur",
+                    name: "Dino",
                     image: "/images/players/player2.png",
                     welcome: {
                         position: {x:200,y:500}
