@@ -86,7 +86,7 @@ export default {
             if (e.keyCode == 32 || e.keyCode == 13) {
                 if (this.rollButton)
                     return this.rollDice();
-                if (this.moveButton)
+                if (this.moveButton && !this.player.moving)
                     return this.movePlayer();
                 if (this.nextButton && store.turn.completed)
                     return this.nextTurn();
