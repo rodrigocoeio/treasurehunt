@@ -70,6 +70,7 @@ export default {
                 let distance = Phaser.Math.Distance.Between(this.Player.x, this.Player.y, this.target.x, this.target.y);
 
                 if (this.Player.body.speed > 0) {
+                    this.player.moving = true;
                     //  4 is our distance tolerance, i.e. how close the source can get to the target
                     //  before it is considered as being there. The faster it moves, the more tolerance is required.
                     if (distance < 6) {
@@ -95,8 +96,8 @@ export default {
 
                         return store.turn.completed = true;
                     }
-                }
-            }
+                } else this.player.moving = false;
+            } else this.player.moving = false;
         },
 
         moveTo(to, speed = 200) {
@@ -123,8 +124,8 @@ export default {
 
         walkTo(walk_to, speed = 200) {
             // prevents from player walking to tile that does not exist
-            this.walk_to = (parseInt(walk_to) > (store.configs.tiles.length - 1))
-                ? (store.configs.tiles.length - 1)
+            this.walk_to = (parseInt(walk_to) > (store.tiles.length - 1))
+                ? (store.tiles.length - 1)
                 : parseInt(walk_to);
             this.walk_speed = speed;
 

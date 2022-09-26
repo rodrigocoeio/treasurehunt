@@ -11,7 +11,7 @@
             class="RollDiceButton btn btn-primary">
             Roll Dice <img src="/images/dice/dice.png" height="24">
         </button>
-        <button v-if="moveButton" @click="movePlayer" class="btn btn-primary">
+        <button v-if="moveButton" @click="movePlayer" :disabled="player.moving" class="btn btn-primary">
             Move <img src="/images/signnext.png" height="24">
         </button>
         <button v-if="ruleButton" @click="executeRule" class="btn btn-primary">
@@ -40,10 +40,10 @@ export default {
             return (!store.turn.started && !this.steps);
         },
         moveButton() {
-            return (store.turn.started && !store.turn.moved);
+            return (store.turn.started && !store.turn.completed && !this.ruleButton);
         },
         nextButton() {
-            return (store.turn.started && store.turn.moved && !this.ruleButton);
+            return (store.turn.started && store.turn.completed);
         },
         ruleButton() {
             return (store.turn.started && store.turn.rule);
@@ -153,7 +153,8 @@ export default {
             let walk_to = this.player.steps + this.steps;
             walk_to = walk_to > (store.tiles.length - 1) ? (store.tiles.length - 1) : walk_to;
 
-            store.turn.moved = true;
+            store.turn.moved = false;
+            this.player.moving = true;
 
             console.log(this.player.name + ' has rolled a ' + this.steps + ' and will walk to ' + walk_to);
 
