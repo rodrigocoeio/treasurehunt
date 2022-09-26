@@ -4,11 +4,13 @@ export default [
     // Row 1
     { number: 0, x: 0, y: 0 },
     { number: 1, x: 128, y: 0,
-        image: "/images/tiles/rock-island.png" 
+        image: "/images/tiles/rock-island.png",
+        rule: rules.takeGoldCoin,
     },
     { number: 2, x: 256, y: 0},
     { number: 3, x: 384, y: 0,
-        image: "/images/tiles/rocks.png" 
+        image: "/images/tiles/rocks.png",
+        rule: rules.takeSilverCoin
     },
     { number: 4, x: 512, y: 0 },
     {
@@ -26,7 +28,8 @@ export default [
     },
     { number: 8, x: 640, y: 130 },
     { number: 9, x: 512, y: 130,
-        image: "/images/tiles/rocks.png"
+        image: "/images/tiles/island.png",
+        rule: rules.takeBronzeCoin
     },
     {
         number: 10, x: 384, y: 130,
@@ -35,7 +38,8 @@ export default [
     },
     { number: 11, x: 256, y: 130 },
     { number: 12, x: 128, y: 130,
-        image: "/images/tiles/cabin.png" 
+        image: "/images/tiles/cabin.png",
+        rule: rules.takeBronzeCoin
     },
     { number: 13, x: 0, y: 130 },
 
@@ -47,10 +51,12 @@ export default [
     {
         number: 15, x: 128, y: 260 },
     { number: 16, x: 256, y: 260,
-        image: "/images/tiles/rock-island.png"
+        image: "/images/tiles/cabin.png",
+        rule: rules.takeBronzeCoin
     },
     { number: 17, x: 384, y: 260,
-        image: "/images/tiles/rocks.png"
+        image: "/images/tiles/rocks.png",
+        rule: rules.takeSilverCoin
     },
     { number: 18, x: 512, y: 260 },
     {
@@ -63,7 +69,8 @@ export default [
     // Row 4
     { number: 21, x: 772, y: 390 },
     { number: 22, x: 640, y: 390,
-        image: "/images/tiles/rock-island.png" 
+        image: "/images/tiles/island.png",
+        rule: rules.takeBronzeCoin
     },
     { number: 23, x: 512, y: 390 },
     {
@@ -73,17 +80,20 @@ export default [
     },
     { number: 25, x: 256, y: 390 },
     { number: 26, x: 128, y: 390,
-        image: "/images/tiles/island.png" 
+        image: "/images/tiles/island.png",
+        rule: rules.takeBronzeCoin
     },
     { number: 27, x: 0, y: 390 },
     // Row 5
     { number: 28, x: 0, y: 520,
-        image: "/images/tiles/rocks.png" 
+        image: "/images/tiles/rocks.png",
+        rule: rules.takeSilverCoin
     },
     { number: 29, x: 128, y: 520 },
     {
         number: 30, x: 256, y: 520,
-        image: "/images/tiles/cabin.png" 
+        image: "/images/tiles/cabin.png",
+        rule: rules.takeBronzeCoin
     },
     { number: 31, x: 384, y: 520 },
     {
@@ -94,6 +104,6 @@ export default [
     { number: 33, x: 640, y: 520 },
     {
         number: 34, x: 772, y: 520,
-        rule: rules.finished
+        rule: rules.openTreasureChest
     }
 ];

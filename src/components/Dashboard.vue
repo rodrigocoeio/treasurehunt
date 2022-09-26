@@ -71,7 +71,7 @@ export default {
 }
 
 .player-image {
-    height: 24px;
+    width: 24px;
 }
 
 .selected td {
@@ -84,7 +84,7 @@ export default {
 }
 
 .selected .player-image {
-    height: 48px;
+    width: 30px;
 }
 
 h6 {

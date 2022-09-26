@@ -79,8 +79,8 @@ export default [
         rule: rules.takeBronzeCoin,
     },
     { number: 22, x: 640, y: 390,
-        image: "/images/tiles/rocks.png",
-        rule: rules.takeSilverCoin,
+        image: "/images/tiles/rock-island.png",
+        rule: rules.takeGoldCoin,
     },
     { number: 23, x: 512, y: 390 },
     {

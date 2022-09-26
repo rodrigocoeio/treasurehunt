@@ -34,9 +34,10 @@ export default {
         name: "Take Gold Coin",
         image: "/images/coin-gold.png",
         trigger() {
-            playAudio('take-coin','wav');
+            playAudio('coin');
         },
         action(player, turn) {
+            playAudio('take-coin','wav');
             player.takeCoin('gold');
             turn.completed = true;
         }
@@ -45,9 +46,10 @@ export default {
         name: "Take Silver Coin",
         image: "/images/coin-silver.png",
         trigger() {
-            playAudio('take-coin','wav');
+            playAudio('coin');
         },
         action(player,turn) {
+            playAudio('take-coin','wav');
             player.takeCoin('silver');
             turn.completed = true;
         }
@@ -56,9 +58,10 @@ export default {
         name: "Take Bronze Coin",
         image: "/images/coin-bronze.png",
         trigger() {
-            playAudio('take-coin','wav');
+            playAudio('coin');
         },
         action(player,turn) {
+            playAudio('take-coin','wav');
             player.takeCoin('bronze');
             turn.completed = true;            
         }

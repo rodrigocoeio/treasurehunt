@@ -150,7 +150,8 @@ export default {
             store.turn.completed = false;
         },
         movePlayer() {
-            const walk_to = this.player.steps + this.steps;
+            let walk_to = this.player.steps + this.steps;
+            walk_to = walk_to > (store.tiles.length - 1) ? (store.tiles.length - 1) : walk_to;
 
             store.turn.moved = true;
 
