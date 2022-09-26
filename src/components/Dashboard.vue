@@ -11,7 +11,7 @@
                     <th width="25">#</th>
                     <th>Player</th>
                     <th>Treasures</th>
-                    <th v-if="started">Position</th>
+                    <th v-if="started">#</th>
                 </tr>
             </thead>
 
@@ -23,14 +23,16 @@
                         <img :src="player.image" class="player-image">
                         {{ player.name }}
                     </td>
-                    <td>
+                    <td width="100">
                         <div class="coin" v-for="count, coin in player.coins" v-show="count>0">
                             <img :src="'/images/coin-' + coin + '.png'" height="24">
                             <span>{{ count }}</span>
                         </div>
 
+                        <br>
+
                         <div class="treasure" v-for="count, treasure in player.treasures" v-show="count>0">
-                            <img :src="'/images/treasures/' + treasure + '.png'" height="24">
+                            <img :src="'/images/treasures/' + treasure + '.png'" height="24" :title="treasure">
                             <span>{{ count }}</span>
                         </div>
                     </td>

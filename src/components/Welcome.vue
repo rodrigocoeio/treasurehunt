@@ -189,7 +189,12 @@ export default {
                     ruby: 0,
                     ring: 0,
                     necklace: 0,
-                    crown: 0
+                    ametista: 0,
+                    necklace2: 0,
+                    earing: 0,
+                    urn: 0,
+                    crown: 0,
+                    graal: 0
                 }
             });
         },
