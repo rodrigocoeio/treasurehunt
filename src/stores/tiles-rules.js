@@ -4,10 +4,10 @@ export default {
         image: "/images/tiles/start-again.png",
         trigger() {
             playAudio('start-over');
-            playAudio('start-it-over');
         },
         action(player) {
             player.startOver();
+            playAudio('start-it-over');
         }
     },
     goBack2: {
