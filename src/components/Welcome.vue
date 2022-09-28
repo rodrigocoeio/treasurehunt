@@ -22,28 +22,29 @@ export default {
                     name: "Pirate",
                     image: "/images/players/player1.png",
                     welcome: {
-                        position: {x:700,y:450}
+                        position: {x:200,y:450}
                     },
-                    position: {x:90,y:92},
-                    scale: 0.25
+                    position: {x:20,y:83},
+                    scale: 0.24
                 },
                 {
                     name: "Dino",
                     image: "/images/players/player2.png",
                     welcome: {
-                        position: {x:200,y:550}
+                        position: {x:700,y:500},
+                        scale: 1.4
                     },
-                    position: {x:30,y:100},
-                    scale: 0.5
+                    position: {x:96,y:95},
+                    scale: 0.45
                 },
                 {
                     name: "Ninja",
                     image: "/images/players/player3.png",
                     welcome: {
                         position: {x:480,y:550},
-                        scale: 1.5
+                        scale: 1.9
                     },
-                    position: {x:63,y:100},
+                    position: {x:63,y:95},
                     scale: 0.7
                 },
                 {
@@ -54,7 +55,7 @@ export default {
                         scale: 0.9
                     },
                     position: {x:93,y:24},
-                    scale: 0.3
+                    scale: 0.275
                 },
                 {
                     name: "Parrot",

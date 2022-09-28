@@ -76,6 +76,8 @@ export default {
             this.physics = PhaserGame.physics;
             this.Player = player;
             this.Shadow = shadow;
+
+            this.selectedAnimation();
         },
 
         update(PhaserGame) {
