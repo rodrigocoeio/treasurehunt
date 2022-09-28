@@ -28,11 +28,11 @@ export default {
                 Phaser.add.image(this.x + (this.width / 2) + 10, this.y  + (this.height / 2), 'tile-background-'+this.number);
             }
 
-            this.numberCircle = Phaser.add.circle(this.x + 20, this.y + 20, 15, 0xffffff);
+            this.numberCircle = Phaser.add.circle(this.x + 20 -3, this.y + 20 -3, 15, 0xffffff);
             this.numberCircle.setStrokeStyle(2, 0x000000);
 
             const numberTextX = this.number<=9 ? 14 : 10;
-            this.numberText = Phaser.add.text(this.x + numberTextX, this.y + 10, this.number, {font: "600 20px Poppins", color: "black"});
+            this.numberText = Phaser.add.text(this.x + numberTextX -3, this.y + 10 -3, this.number, {font: "600 20px Poppins", color: "black"});
             this.numberText.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);        
         }
     }

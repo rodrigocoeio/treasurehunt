@@ -41,17 +41,17 @@ export default {
                     name: "Ninja",
                     image: "/images/players/player3.png",
                     welcome: {
-                        position: {x:480,y:550},
+                        position: {x:450,y:550},
                         scale: 1.9
                     },
-                    position: {x:63,y:95},
+                    position: {x:55,y:95},
                     scale: 0.7
                 },
                 {
                     name: "Fairy",
                     image: "/images/players/player4.png",
                     welcome: {
-                        position: {x:600,y:110},
+                        position: {x:600,y:130},
                         scale: 0.9
                     },
                     position: {x:93,y:24},
@@ -61,10 +61,10 @@ export default {
                     name: "Parrot",
                     image: "/images/players/player5.png",
                     welcome: {
-                        position: {x:200,y:150},
+                        position: {x:292,y:150},
                         scale: 1
                     },
-                    position: {x:33,y:33},
+                    position: {x:36,y:42},
                     scale: 0.4
                 }
             ],
@@ -143,7 +143,7 @@ export default {
             if(scale)
                 player.setScale(scale);
 
-            player.setAlpha(0.6);
+            player.setAlpha(0.7);
             player.setInteractive();
             player.inputEnabled = true;
             player.on('pointerover', function (event) {
@@ -208,9 +208,9 @@ export default {
             const players = store.players.filter( p => p.name != playerConfigs.name );
             store.configs.players--;
             store.players = players;
-            player.setAlpha(0.6);
+            player.setAlpha(0.7);
             player.on('pointerout', function (event) {
-                this.setAlpha(0.6);
+                this.setAlpha(0.7);
             });
             player.text.destroy();
         },  
