@@ -1,3 +1,5 @@
+import points from "$/points.js";
+
 export default {
     startOver: {
         name: "Start it Over",
@@ -33,6 +35,7 @@ export default {
     takeGoldCoin: {
         name: "Take Gold Coin",
         image: "/images/coin-gold.png",
+        text: "+10 points",
         trigger() {
             playAudio('coin');
         },
@@ -45,6 +48,7 @@ export default {
     takeSilverCoin: {
         name: "Take Silver Coin",
         image: "/images/coin-silver.png",
+        text: "+5 points",
         trigger() {
             playAudio('coin');
         },
@@ -56,6 +60,7 @@ export default {
     },
     takeBronzeCoin: {
         name: "Take Bronze Coin",
+        text: "+3 points",
         image: "/images/coin-bronze.png",
         trigger() {
             playAudio('coin');
@@ -68,21 +73,31 @@ export default {
     },
     openTreasureChest: {
         name: "Open Chest!",
-        image: "/images/treasurechest.png",
+        image: "/images/chest_closed.png",
         trigger() {
             playAudio('finished');
         },
         action(player) {
             const treasures = [
-                'crown','ring','necklace','ruby'
+                'ruby',
+                'ring',
+                'necklace',
+                'necklace2',
+                'ametista',
+                'earing',
+                'urn',
+                'crown',
+                'graal'
             ];
             const treasure_index = Math.floor(Math.random() * treasures.length);
             const treasure = treasures[treasure_index];
+            const treasure_value = points[treasure];
 
             playAudio('take-treasure');
             
             return {
                 name: "Take Treasure!",
+                text: "+" + treasure_value +" points",
                 image: "/images/treasures/"+treasure+".png",
                 trigger() {
                     

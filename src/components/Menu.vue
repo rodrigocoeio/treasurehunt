@@ -65,6 +65,12 @@
           <!-- Game Sound -->
           <li class="nav-item">
             <div class="game-sound form-check form-switch">
+              <input class="form-check-input" type="checkbox" name="voice" id="voice" v-model="configs.voice">
+              <label for="voice">Voice</label>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="game-sound form-check form-switch">
               <input class="form-check-input" type="checkbox" name="sound" id="sound" v-model="configs.sound">
               <label for="sound">Sound</label>
             </div>

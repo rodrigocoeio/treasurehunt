@@ -1,8 +1,8 @@
 <template>
     <div class="GameDice bg-light">
         <div class="Player" v-if="turn.player">
-            <img :src="playerImage">
-            <h5>{{ turn.player.name }}'s<br>turn</h5>
+            
+            <h5><img :src="playerImage"> &nbsp;&nbsp;&nbsp;{{ turn.player.name }}'s turn</h5>
         </div>
 
         <img :src="diceImage" class="Dice">
@@ -11,12 +11,18 @@
             class="RollDiceButton btn btn-primary">
             Roll Dice <img src="/images/dice/dice.png" height="24">
         </button>
+
         <button v-if="moveButton" @click="movePlayer" :disabled="player.moving" class="btn btn-primary">
             Move <img src="/images/signnext.png" height="24">
         </button>
+
+        <div class="RuleText" v-if="ruleButton && turn.rule.text">
+            {{ turn.rule.text }}
+        </div>
         <button v-if="ruleButton" @click="executeRule" class="btn btn-primary">
             {{ turn.rule.name }}
         </button>
+
         <button v-if="nextButton" :disabled="!turn.completed" @click="nextTurn" class="NextTurnButton btn btn-primary">
             Next Turn 
         </button>
@@ -71,6 +77,9 @@ export default {
         },
         players() {
             return store.players;
+        },
+        voice() {
+            return store.configs.voice;
         }
     },
 
@@ -134,7 +143,8 @@ export default {
             this.next_cheat_steps = false;
 
             playAudio('dice');
-            playAudio('dice-' + this.steps);
+            if(this.voice)
+                playAudio('dice-' + this.steps);
 
             console.log(this.player.name + " has rolled a " + this.steps);
 
@@ -164,7 +174,8 @@ export default {
         nextTurn() {
             console.log('next turn');
 
-            playAudio('roll-dice');
+            if(this.voice)
+                playAudio('roll-dice');
 
             this.steps = 0;
 
@@ -229,5 +240,11 @@ button {
     font-family: aerial;
     font-size: 23px;
     font-weight: bold;
+    margin-top:15px;
+}
+
+.RuleText { 
+    font-size: 20px;
+    margin-top: -20px;
 }
 </style>

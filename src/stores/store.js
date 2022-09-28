@@ -11,6 +11,7 @@ const state = {
     players: 0,
     menu: true,
     sound: true,
+    voice: false,
     tiles: tiles
   },
   started: false,     //  Game Started

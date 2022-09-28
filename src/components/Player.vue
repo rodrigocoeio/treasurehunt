@@ -7,6 +7,7 @@
 <script>
 import objectMixins from "@/mixins/object-mixins.js";
 import store from "$/store.js";
+import points from "$/points.js";
 
 export default {
     props: ['player'],
@@ -34,6 +35,9 @@ export default {
     computed: {
         isSelected() {
             return this.player == store.turn.player;
+        },
+        selected() {
+            return this.isSelected;
         }
     },
 
@@ -66,6 +70,10 @@ export default {
         },
 
         update(PhaserGame) {
+            if(this.selected) {
+                this.selectedAnimation(PhaserGame);
+            }
+
             if (this.target) {
                 let distance = Phaser.Math.Distance.Between(this.Player.x, this.Player.y, this.target.x, this.target.y);
 
@@ -122,6 +130,10 @@ export default {
             throw Error("Error while moving player " + this.player.name + " to: " + to + " ( tile " + to + " does not exist )");
         },
 
+        selectedAnimation() {
+
+        },
+
         walkTo(walk_to, speed = 200) {
             // prevents from player walking to tile that does not exist
             this.walk_to = (parseInt(walk_to) > (store.tiles.length - 1))
@@ -147,6 +159,8 @@ export default {
                 1 :
                 parseInt(this.player.coins[kind]) + 1;
 
+            this.player.points = points[kind] ? this.player.points+points[kind] : this.player.points;
+
             playAudio('take-coin');
         },
         takeTreasure(kind) {
@@ -155,6 +169,10 @@ export default {
             this.player.treasures[kind] = typeof this.player.treasures[kind] != "number" ?
                 1 :
                 parseInt(this.player.treasures[kind]) + 1;
+
+            this.player.points = points[kind] ? this.player.points+points[kind] : this.player.points;
+
+            playAudio('take-treasure');
         },
         goFoward(steps) {
             const go_to = this.player.steps + steps;

@@ -5,12 +5,12 @@
 
         <h6 v-show="players.length==0">Choose players...</h6>
 
-        <table class="player-name" v-if="players.length">
+        <table class="player-name" v-if="players.length" width="272">
             <thead>
                 <tr>
                     <th width="25">#</th>
                     <th>Player</th>
-                    <th>Treasures</th>
+                    <th v-if="started">Treasures</th>
                     <th v-if="started">#</th>
                 </tr>
             </thead>
@@ -23,18 +23,23 @@
                         <img :src="player.image" class="player-image">
                         {{ player.name }}
                     </td>
-                    <td width="100">
-                        <div class="coin" v-for="count, coin in player.coins" v-show="count>0">
+                    <td v-if="started" width="130">
+                        <div class="TreasurePoints">
+                            <img src="/images/chest_closed.png" width="36">
+                            <span class="PlayerPoints">{{ player.points }} points</span>
+                        </div>
+                        
+                        <!-- <div class="coin" v-for="count, coin in player.coins">
                             <img :src="'/images/coin-' + coin + '.png'" height="24">
                             <span>{{ count }}</span>
-                        </div>
-
-                        <br>
-
+                        </div> -->
+                        <!--
                         <div class="treasure" v-for="count, treasure in player.treasures" v-show="count>0">
                             <img :src="'/images/treasures/' + treasure + '.png'" height="24" :title="treasure">
                             <span>{{ count }}</span>
-                        </div>
+                        </div> -->
+
+                        
                     </td>
                     <td v-if="started" align="center" class="player-name">{{ player.steps }}</td>
                 </tr>
@@ -64,7 +69,7 @@ export default {
 
 <style scoped>
 .GameDashboard {
-    padding: 15px;
+    margin-top: -10px;
 }
 
 .player-name {
@@ -76,12 +81,17 @@ export default {
     width: 24px;
 }
 
+td, th {
+    border-bottom: 1px solid black;
+}
+
 .selected td {
     background: #A6FF81;
+    font-weight: bold;
 }
 
 .selected .player-name {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
 }
 
@@ -116,15 +126,27 @@ td {
 
 .coin span, .treasure span {
     font-size: 20px;
-    color:white;
+    color:black;
     margin-top: -3px;
     margin-left: -17px;
-    font-weight: bold;
-    -webkit-text-stroke: 1px black;
+    font-weight: 900;
+    -webkit-text-stroke: 1px white;
     float: left;
+    cursor:pointer;
 }
 
 .coin img, .treasure img {
     float: left;
+}
+
+.TreasurePoints {
+    font-size: 22px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.TreasurePoints img {
+    display:block;
+    margin: auto;
 }
 </style>

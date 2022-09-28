@@ -180,6 +180,7 @@ export default {
                 steps: 0,
                 walk: 0,
                 finished: false,
+                points: 0,
                 coins: {
                     bronze: 0,
                     silver: 0,
