@@ -8,7 +8,7 @@ export default {
     necklace: 15,
     ametista: 20,
     necklace2: 20,
-    urn: 20,
-    crown: 30,
+    urn: 30,
+    crown: 50,
     graal: 50
 }
