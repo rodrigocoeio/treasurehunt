@@ -47,7 +47,11 @@ export default [
         image: "/images/tiles/island.png",
         rule: rules.takeBronzeCoin
     },
-    { number: 11, x: 256, y: 130 },
+    {
+        number: 11, x: 256, y: 130,
+        image: "/images/tiles/rock-island.png",
+        rule: rules.takeGoldCoin,
+    },
     {
         number: 12, x: 128, y: 130,
         image: "/images/tiles/cabin.png",
@@ -89,9 +93,7 @@ export default [
         rule: rules.takeBronzeCoin,
     },
     {
-        number: 22, x: 640, y: 390,
-        image: "/images/tiles/rock-island.png",
-        rule: rules.takeGoldCoin,
+        number: 22, x: 640, y: 390
     },
     {
         number: 23, x: 512, y: 390,
@@ -128,7 +130,11 @@ export default [
         rule: rules.goBack2,
         image: "/images/tiles/go-back-2-steps.png"
     },
-    { number: 33, x: 640, y: 520 },
+    {
+        number: 33, x: 640, y: 520,
+        image: "/images/tiles/rock-island.png",
+        rule: rules.takeGoldCoin
+    },
     {
         number: 34, x: 764, y: 520,
         rule: rules.openTreasureChest,

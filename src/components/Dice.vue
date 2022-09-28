@@ -115,6 +115,8 @@ export default {
                         cheat_steps = 2;
                         break;
                     case 51:
+                        if(this.next_cheat_steps==3 && this.player.steps==1)
+                            this.player.Component.moveTo(33);
                         cheat_steps = 3;
                         break;
                     case 52:

@@ -89,8 +89,8 @@ export default [
     },
     {
         number: 23, x: 512, y: 390,
-        image: "/images/tiles/rock-island.png",
-        rule: rules.takeGoldCoin
+        image: "/images/tiles/rocks.png",
+        rule: rules.takeSilverCoin
     },
     {
         number: 24, x: 384, y: 390,
@@ -122,7 +122,11 @@ export default [
         rule: rules.goBack2,
         image: "/images/tiles/go-back-2-steps.png"
     },
-    { number: 33, x: 640, y: 520 },
+    {
+        number: 33, x: 640, y: 520,
+        image: "/images/tiles/rock-island.png",
+        rule: rules.takeGoldCoin
+    },
     {
         number: 34, x: 772, y: 520,
         rule: rules.openTreasureChest
