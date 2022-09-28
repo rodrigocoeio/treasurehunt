@@ -9,7 +9,7 @@
             <thead>
                 <tr>
                     <th width="25">#</th>
-                    <th>Player</th>
+                    <th @click="sortBy('turn')">Player</th>
                     <th v-if="started">Treasures</th>
                     <th v-if="started">#</th>
                 </tr>
@@ -54,15 +54,24 @@ import store from '$/store.js';
 
 export default {
     data() {
-        return store
+        return {
+            sortyBy: 'steps'
+        }
     },
 
 
     computed: {
+        started() {
+            return store.started;
+        },
+        players() {
+            return store.players;
+        },
+        turn() {
+            return store.turn;
+        },
         sortedPlayers() {
-            const players = store.players;
-            //return sortByKey([...players], 'steps');
-            return players;
+            return sortByKey([...this.players], this.sortBy);
         }
     },
 
