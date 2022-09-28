@@ -24,20 +24,21 @@
                         {{ player.name }}
                     </td>
                     <td v-if="started" width="130">
-                        <div class="TreasurePoints">
-                            <img src="/images/chest_closed.png" width="36">
+                        <div class="TreasurePoints" @click="openCloseChest(player)">
+                            <img :src="player.showTreasures ? '/images/chest_open.png' : '/images/chest_closed.png'" width="36">
                             <span class="PlayerPoints">{{ player.points }} points</span>
                         </div>
                         
-                        <!-- <div class="coin" v-for="count, coin in player.coins">
-                            <img :src="'/images/coin-' + coin + '.png'" height="24">
-                            <span>{{ count }}</span>
-                        </div> -->
-                        <!--
-                        <div class="treasure" v-for="count, treasure in player.treasures" v-show="count>0">
-                            <img :src="'/images/treasures/' + treasure + '.png'" height="24" :title="treasure">
-                            <span>{{ count }}</span>
-                        </div> -->
+                        <div class="TreasuresBox" v-if="player.showTreasures">
+                            <div class="coin" v-for="count, coin in player.coins">
+                                <img :src="'/images/coin-' + coin + '.png'" height="24">
+                                <span>{{ count }}</span>
+                            </div>
+                            <div class="treasure" v-for="count, treasure in player.treasures" v-show="count>0">
+                                <img :src="'/images/treasures/' + treasure + '.png'" height="24" :title="treasure">
+                                <span>{{ count }}</span>
+                            </div>
+                        </div>
 
                         
                     </td>
@@ -62,6 +63,12 @@ export default {
             const players = store.players;
             //return sortByKey([...players], 'steps');
             return players;
+        }
+    },
+
+    methods: {
+        openCloseChest(player) {
+            player.showTreasures = !player.showTreasures;
         }
     }
 }
@@ -117,11 +124,13 @@ td {
 .coin {
     display: inline-block;
     margin-left: 5px;
+    text-align: center;
 }
 
 .treasure {
     display: inline-block;
     margin-left: 5px;
+    text-align: center;
 }
 
 .coin span, .treasure span {
@@ -148,5 +157,9 @@ td {
 .TreasurePoints img {
     display:block;
     margin: auto;
+}
+
+.TreasuresBox {
+    text-align: center;
 }
 </style>

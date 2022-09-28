@@ -181,6 +181,7 @@ export default {
                 walk: 0,
                 finished: false,
                 points: 0,
+                showTreasures: false,
                 coins: {
                     bronze: 0,
                     silver: 0,

@@ -109,6 +109,7 @@ export default {
       if (this.players.length === 0)
         return false;
 
+      
       const audio = playAudio('started');
       audio.volume = 0.4
       audio.play();
