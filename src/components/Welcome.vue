@@ -22,47 +22,49 @@ export default {
                     name: "Pirate",
                     image: "/images/players/player1.png",
                     welcome: {
-                        position: {x:700,y:400}
+                        position: {x:700,y:450}
                     },
-                    position: {x:90,y:85},
-                    scale: 0.2
+                    position: {x:90,y:92},
+                    scale: 0.25
                 },
                 {
                     name: "Dino",
                     image: "/images/players/player2.png",
                     welcome: {
-                        position: {x:200,y:500}
+                        position: {x:200,y:550}
                     },
                     position: {x:30,y:100},
-                    scale: 0.3
+                    scale: 0.5
                 },
                 {
                     name: "Ninja",
                     image: "/images/players/player3.png",
                     welcome: {
-                        position: {x:480,y:500}
+                        position: {x:480,y:550},
+                        scale: 1.5
                     },
                     position: {x:63,y:100},
-                    scale: 0.5
+                    scale: 0.7
                 },
                 {
                     name: "Fairy",
                     image: "/images/players/player4.png",
                     welcome: {
-                        position: {x:600,y:170},
-                        scale: 0.5
+                        position: {x:600,y:110},
+                        scale: 0.9
                     },
                     position: {x:93,y:24},
-                    scale: 0.2
+                    scale: 0.3
                 },
                 {
                     name: "Parrot",
                     image: "/images/players/player5.png",
                     welcome: {
-                        position: {x:200,y:200}
+                        position: {x:200,y:150},
+                        scale: 1
                     },
                     position: {x:33,y:33},
-                    scale: 0.3
+                    scale: 0.4
                 }
             ],
             ...store
