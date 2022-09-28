@@ -29,7 +29,7 @@
                             <span class="PlayerPoints">{{ player.points }} points</span>
                         </div>
                         
-                        <div class="TreasuresBox" v-if="player.showTreasures">
+                        <div class="TreasuresBox" v-if="player.showTreasures" @click="openCloseChest(player)">
                             <div class="coin" v-for="count, coin in player.coins">
                                 <img :src="'/images/coin-' + coin + '.png'" height="24">
                                 <span>{{ count }}</span>
@@ -76,7 +76,7 @@ export default {
 
 <style scoped>
 .GameDashboard {
-    margin-top: -10px;
+    margin-top: 0px;
 }
 
 .player-name {

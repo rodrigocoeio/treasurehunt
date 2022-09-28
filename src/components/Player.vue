@@ -18,6 +18,7 @@ export default {
         const Game = this.$parent.Game;
         return {
             Game: Game,
+            PhaserGame: false,
             Player: false,
             Shadow: false,
             shadowDistance: 2,
@@ -41,8 +42,16 @@ export default {
         }
     },
 
+    watch: {
+        selected() {
+            this.selectedAnimation();
+        }
+    },
+
     methods: {
         preload(PhaserGame) {
+            this.PhaserGame = PhaserGame;
+            PhaserGame.load.plugin('rexglowfilterpipelineplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilterpipelineplugin.min.js', true);
             PhaserGame.load.image(this.player.name, this.player.image);
 
             let image = new Image();
@@ -70,10 +79,6 @@ export default {
         },
 
         update(PhaserGame) {
-            if(this.selected) {
-                this.selectedAnimation(PhaserGame);
-            }
-
             if (this.target) {
                 let distance = Phaser.Math.Distance.Between(this.Player.x, this.Player.y, this.target.x, this.target.y);
 
@@ -131,7 +136,31 @@ export default {
         },
 
         selectedAnimation() {
+            const Player = this.Player;
+            const PhaserGame = this.PhaserGame;
+            const Between = Phaser.Math.Between;
+            var postFxPlugin = PhaserGame.plugins.get('rexglowfilterpipelineplugin');
+            var pipeline = postFxPlugin.add(Player);
 
+            if (this.selected) {
+                Player.glowTask = Player.scene.tweens.add({
+                    targets: pipeline,
+                    intensity: 0.02,
+                    ease: 'Linear',
+                    duration: Between(500, 1000),
+                    repeat: -1,
+                    yoyo: true
+                });
+
+            } else {
+                // Remove postfx pipeline
+                postFxPlugin.remove(Player);
+                if(Player.glowTask)
+                {
+                    Player.glowTask.stop();
+                    Player.glowTask = null;
+                }               
+            }
         },
 
         walkTo(walk_to, speed = 200) {
@@ -159,7 +188,7 @@ export default {
                 1 :
                 parseInt(this.player.coins[kind]) + 1;
 
-            this.player.points = points[kind] ? this.player.points+points[kind] : this.player.points;
+            this.player.points = points[kind] ? this.player.points + points[kind] : this.player.points;
 
             playAudio('take-coin');
         },
@@ -170,7 +199,7 @@ export default {
                 1 :
                 parseInt(this.player.treasures[kind]) + 1;
 
-            this.player.points = points[kind] ? this.player.points+points[kind] : this.player.points;
+            this.player.points = points[kind] ? this.player.points + points[kind] : this.player.points;
 
             playAudio('take-treasure');
         },

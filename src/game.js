@@ -47,6 +47,6 @@ export default (configs, gameComponent, objectComponents) => {
     });
 
     log("phaser game created");
-
+    
     return PhaserGame;
 }
