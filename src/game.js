@@ -47,6 +47,12 @@ export default (configs, gameComponent, objectComponents) => {
     });
 
     log("phaser game created");
+
+    const canvas = document.querySelectorAll("canvas");
+    if(canvas.length>1){
+        log("removing doubled canvas");
+        canvas[0].remove();
+    }
     
     return PhaserGame;
 }
