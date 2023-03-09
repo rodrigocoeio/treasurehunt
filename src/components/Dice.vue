@@ -1,7 +1,7 @@
 <template>
     <div class="GameDice bg-light">
         <div class="Player" v-if="turn.player">
-            
+
             <h5><img :src="playerImage"> &nbsp;&nbsp;&nbsp;{{ turn.player.name }}'s turn</h5>
         </div>
 
@@ -24,7 +24,7 @@
         </button>
 
         <button v-if="nextButton" :disabled="!turn.completed" @click="nextTurn" class="NextTurnButton btn btn-primary">
-            Next Turn 
+            Next Turn
         </button>
     </div>
 </template>
@@ -58,9 +58,9 @@ export default {
             if (this.ruleButton && store.turn.rule.image)
                 return store.turn.rule.image;
 
-            if  (this.nextButton)
+            if (this.nextButton)
                 return "/images/signnext.png";
-                
+
             if (this.steps)
                 return "/images/dice/" + this.steps + ".png";
 
@@ -103,8 +103,7 @@ export default {
                     return this.executeRule();
             }
 
-            if (this.rollButton)
-            {
+            if (this.rollButton) {
                 let cheat_steps = false;
 
                 switch (e.keyCode) {
@@ -115,7 +114,7 @@ export default {
                         cheat_steps = 2;
                         break;
                     case 51:
-                        if(this.next_cheat_steps==3 && this.player.steps==1)
+                        if (this.next_cheat_steps == 3 && this.player.steps == 1)
                             this.player.Component.moveTo(33);
                         cheat_steps = 3;
                         break;
@@ -145,8 +144,8 @@ export default {
             this.next_cheat_steps = false;
 
             playAudio('dice');
-            if(this.voice)
-                playAudio('dice-' + this.steps);
+            if (this.voice)
+                playAudio('dice-' + this.steps, 'mp3', 'voice');
 
             console.log(this.player.name + " has rolled a " + this.steps);
 
@@ -176,8 +175,8 @@ export default {
         nextTurn() {
             console.log('next turn');
 
-            if(this.voice)
-                playAudio('roll-dice');
+            if (this.voice)
+                playAudio('roll-dice', 'mp3', 'voice');
 
             this.steps = 0;
 
@@ -242,10 +241,10 @@ button {
     font-family: aerial;
     font-size: 23px;
     font-weight: bold;
-    margin-top:15px;
+    margin-top: 15px;
 }
 
-.RuleText { 
+.RuleText {
     font-size: 20px;
     margin-top: -20px;
 }

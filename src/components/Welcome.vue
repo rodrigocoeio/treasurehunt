@@ -22,53 +22,62 @@ export default {
                     name: "Pirate",
                     image: "/images/players/player1.png",
                     welcome: {
-                        position: {x:200,y:450}
+                        position: { x: 200, y: 450 }
                     },
-                    position: {x:20,y:83},
+                    position: { x: 20, y: 83 },
                     scale: 0.24
                 },
                 {
                     name: "Dino",
                     image: "/images/players/player2.png",
                     welcome: {
-                        position: {x:700,y:500},
+                        position: { x: 700, y: 500 },
                         scale: 1.4
                     },
-                    position: {x:96,y:95},
+                    position: { x: 96, y: 95 },
                     scale: 0.45
                 },
                 {
                     name: "Ninja",
                     image: "/images/players/player3.png",
                     welcome: {
-                        position: {x:450,y:550},
+                        position: { x: 450, y: 550 },
                         scale: 1.9
                     },
-                    position: {x:55,y:95},
+                    position: { x: 55, y: 95 },
                     scale: 0.7
                 },
                 {
                     name: "Fairy",
                     image: "/images/players/player4.png",
                     welcome: {
-                        position: {x:600,y:130},
+                        position: { x: 600, y: 130 },
                         scale: 0.9
                     },
-                    position: {x:93,y:24},
+                    position: { x: 93, y: 24 },
                     scale: 0.275
                 },
                 {
                     name: "Parrot",
                     image: "/images/players/player5.png",
                     welcome: {
-                        position: {x:292,y:150},
+                        position: { x: 292, y: 150 },
                         scale: 1
                     },
-                    position: {x:36,y:42},
+                    position: { x: 36, y: 42 },
                     scale: 0.4
                 }
             ],
             ...store
+        }
+    },
+
+    computed: {
+        music() {
+            return store.configs.music;
+        },
+        sound() {
+            return store.configs.sound;
         }
     },
 
@@ -85,22 +94,25 @@ export default {
     methods: {
         listenKeyBoardEvents(e) {
             if (e.keyCode == 32 || e.keyCode == 13) {
-                if(!store.started)
+                if (!store.started)
                     this.$parent.start();
             }
         },
         startMusic() {
-            if(!this.background_audio)
-                this.background_audio = playAudio('forest-background');
+            if (this.sound && this.music) {
+                if (!this.background_audio)
+                    this.background_audio = playAudio('forest-background');
 
-            this.background_audio.loop = true;
-            this.background_audio.volume = 0.2;
-            this.background_audio.play();
+                this.background_audio.loop = true;
+                this.background_audio.volume = 0.2;
+
+
+                this.background_audio.play();
+            }
         },
         stopMusic() {
-            if(this.background_audio)
-            {
-                this.background_audio.pause(); 
+            if (this.background_audio) {
+                this.background_audio.pause();
                 this.background_audio = false;
             }
         },
@@ -112,12 +124,12 @@ export default {
             // Players
             this.players_available.forEach((player) => {
                 PhaserGame.load.image(player.name, player.image);
-            });            
+            });
         },
         create(PhaserGame) {
             const Welcome = this;
             this.background = PhaserGame.add.image(this.configs.width / 2, this.configs.height / 2, 'background');
-            
+
             this.chest = PhaserGame.add.image(this.configs.width / 2, (this.configs.height / 2) + 80, 'chest');
             this.logo = PhaserGame.add.image(this.configs.width / 2, (this.configs.height / 2) - 70, 'logo');
 
@@ -137,10 +149,10 @@ export default {
             const x = playerConfigs.welcome.position.x;
             const y = playerConfigs.welcome.position.y;
             const scale = playerConfigs.welcome.scale;
-            
+
             const player = PhaserGame.add.sprite(x, y, name);
 
-            if(scale)
+            if (scale)
                 player.setScale(scale);
 
             player.setAlpha(0.7);
@@ -153,11 +165,11 @@ export default {
                 this.setAlpha(0.6);
             });
             player.on('pointerup', function (pointer) {
-                if(!player.selected){
-                    Welcome.selectPlayer(PhaserGame,player,playerConfigs);
+                if (!player.selected) {
+                    Welcome.selectPlayer(PhaserGame, player, playerConfigs);
                     player.selected = true;
                 } else {
-                    Welcome.unselectPlayer(PhaserGame,player,playerConfigs);
+                    Welcome.unselectPlayer(PhaserGame, player, playerConfigs);
                     player.selected = false;
                 }
             });
@@ -168,7 +180,7 @@ export default {
 
             const x = playerConfigs.welcome.position.x;
             const y = playerConfigs.welcome.position.y;
-            player.text = PhaserGame.add.text(x - 100, y+40, playerConfigs.name, { fontSize: 40, color: 'white', backgroundColor: 'black', fontWeight: 'bold'});
+            player.text = PhaserGame.add.text(x - 100, y + 40, playerConfigs.name, { fontSize: 40, color: 'white', backgroundColor: 'black', fontWeight: 'bold' });
             player.setAlpha(1);
             player.on('pointerout', function (event) {
                 this.setAlpha(1);
@@ -205,7 +217,7 @@ export default {
         },
         unselectPlayer(PhaserGame, player, playerConfigs) {
             playAudio('selected');
-            const players = store.players.filter( p => p.name != playerConfigs.name );
+            const players = store.players.filter(p => p.name != playerConfigs.name);
             store.configs.players--;
             store.players = players;
             player.setAlpha(0.7);
@@ -213,7 +225,7 @@ export default {
                 this.setAlpha(0.7);
             });
             player.text.destroy();
-        },  
+        },
         update(PhaserGame) {
 
         }
@@ -221,6 +233,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

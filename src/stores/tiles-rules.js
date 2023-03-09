@@ -5,18 +5,18 @@ export default {
         name: "Start it Over",
         image: "/images/tiles/start-again.png",
         trigger() {
-            playAudio('start-over');
+            playAudio('start-over', 'mp3', 'voice');
         },
         action(player) {
             player.startOver();
-            playAudio('start-it-over');
+            playAudio('start-it-over', 'mp3', 'voice');
         }
     },
     goBack2: {
         name: "Go Back",
         image: "/images/go-back.png",
         trigger() {
-            playAudio('back-2');
+            playAudio('back-2', 'mp3', 'voice');
         },
         action(player) {
             player.goBack(2);
@@ -26,7 +26,7 @@ export default {
         name: "Go Foward",
         image: "/images/go-forward.png",
         trigger() {
-            playAudio('forward-2');
+            playAudio('forward-2', 'mp3', 'voice');
         },
         action(player) {
             player.goFoward(2);

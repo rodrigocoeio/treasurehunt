@@ -30,6 +30,12 @@ export default
                 const tiles = store.configs.tiles[difficulty] ? store.configs.tiles[difficulty] : [];
 
                 return tiles;
+            },
+            sound() {
+                return store.configs.sound;
+            },
+            music() {
+                return store.configs.music;
             }
         },
 
@@ -45,12 +51,16 @@ export default
 
         methods: {
             startMusic() {
-                if (!this.background_audio)
-                    this.background_audio = playAudio('board-background2');
+                if (this.sound && this.music) {
+                    if (!this.background_audio)
+                        this.background_audio = playAudio('board-background2');
 
-                this.background_audio.volume = 0.5;
-                this.background_audio.loop = true;
-                this.background_audio.play();
+                    this.background_audio.volume = 0.5;
+                    this.background_audio.loop = true;
+
+
+                    this.background_audio.play();
+                }
             },
             stopMusic() {
                 if (this.background_audio) {

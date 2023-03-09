@@ -71,6 +71,12 @@
           </li>
           <li class="nav-item">
             <div class="game-sound form-check form-switch">
+              <input class="form-check-input" type="checkbox" name="music" id="music" v-model="configs.music">
+              <label for="music">Music</label>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="game-sound form-check form-switch">
               <input class="form-check-input" type="checkbox" name="sound" id="sound" v-model="configs.sound">
               <label for="sound">Sound</label>
             </div>
