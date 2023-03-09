@@ -1,8 +1,8 @@
 <template>
     <div class="GameDice bg-light">
         <div class="Player" v-if="turn.player">
-
-            <h5><img :src="playerImage"> &nbsp;&nbsp;&nbsp;{{ turn.player.name }}'s turn</h5>
+            <h3>{{ turn.player.name }}'s turn</h3>
+            <img :src="playerImage">
         </div>
 
         <img :src="diceImage" class="Dice">
@@ -216,19 +216,15 @@ table {
 }
 
 .GameDice {
-    padding: 15px;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
     min-height: 200px;
-    margin-bottom: 15px;
 }
 
 .Dice {
     display: block;
     margin: auto;
-    margin-top: 17px;
-    margin-bottom: 15px;
     max-height: 64px;
 }
 
@@ -242,10 +238,29 @@ button {
     font-size: 23px;
     font-weight: bold;
     margin-top: 15px;
+    padding: 8px;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+button:not([disabled]):hover {
+    background-color: chartreuse;
+    text-shadow: white 3px 0 10px;
+    box-shadow: 3px 3px gray;
+}
+
+button * {
+    vertical-align: middle;
+}
+
+h3 {
+    margin: 0px;
 }
 
 .RuleText {
     font-size: 20px;
-    margin-top: -20px;
+    margin-top: -10px;
+    margin-bottom: -20px;
 }
 </style>

@@ -3,7 +3,7 @@
         <!-- <h5 v-show="sortedPlayers.length>0">Dashboard</h5> -->
         <!-- <h5>Turn Nº{{ turn.turn }}</h5> -->
 
-        <h6 v-show="players.length==0">Choose players...</h6>
+        <h6 v-show="players.length == 0">Choose players...</h6>
 
         <table class="player-name" v-if="players.length" width="272">
             <thead>
@@ -16,31 +16,32 @@
             </thead>
 
             <tbody>
-                <tr :class="[turn.player == player ? 'selected' : '']" v-for="(player,index) in sortedPlayers">
+                <tr :class="[turn.player == player ? 'selected' : '']" v-for="(player, index) in sortedPlayers">
                     <td class="player-name">{{ index + 1 }}º</td>
-             
+
                     <td class="player-name">
                         <img :src="player.image" class="player-image">
                         {{ player.name }}
                     </td>
                     <td v-if="started" width="130">
                         <div class="TreasurePoints" @click="openCloseChest(player)">
-                            <img :src="player.showTreasures ? '/images/chest_open.png' : '/images/chest_closed.png'" width="36">
+                            <img :src="player.showTreasures ? '/images/chest_open.png' : '/images/chest_closed.png'"
+                                width="36">
                             <span class="PlayerPoints">{{ player.points }} points</span>
                         </div>
-                        
+
                         <div class="TreasuresBox" v-if="player.showTreasures" @click="openCloseChest(player)">
                             <div class="coin" v-for="count, coin in player.coins">
                                 <img :src="'/images/coin-' + coin + '.png'" height="24">
                                 <span>{{ count }}</span>
                             </div>
-                            <div class="treasure" v-for="count, treasure in player.treasures" v-show="count>0">
+                            <div class="treasure" v-for="count, treasure in player.treasures" v-show="count > 0">
                                 <img :src="'/images/treasures/' + treasure + '.png'" height="24" :title="treasure">
                                 <span>{{ count }}</span>
                             </div>
                         </div>
 
-                        
+
                     </td>
                     <td v-if="started" align="center" class="player-name">{{ player.steps }}</td>
                 </tr>
@@ -97,12 +98,13 @@ export default {
     width: 24px;
 }
 
-td, th {
+td,
+th {
     border-bottom: 1px solid black;
 }
 
 .selected td {
-    background: #A6FF81;
+    background: chartreuse;
     font-weight: bold;
 }
 
@@ -122,12 +124,12 @@ h6 {
 
 table {
     margin: auto;
+    border-spacing: 0;
 }
 
 th,
 td {
     vertical-align: middle;
-    padding: 3px;
 }
 
 .coin {
@@ -142,18 +144,20 @@ td {
     text-align: center;
 }
 
-.coin span, .treasure span {
+.coin span,
+.treasure span {
     font-size: 20px;
-    color:black;
+    color: black;
     margin-top: -3px;
     margin-left: -17px;
     font-weight: 900;
     -webkit-text-stroke: 1px white;
     float: left;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.coin img, .treasure img {
+.coin img,
+.treasure img {
     float: left;
 }
 
@@ -164,11 +168,10 @@ td {
 }
 
 .TreasurePoints img {
-    display:block;
+    display: block;
     margin: auto;
 }
 
 .TreasuresBox {
     text-align: center;
-}
-</style>
+}</style>

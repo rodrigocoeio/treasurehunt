@@ -51,7 +51,7 @@ export default
 
         methods: {
             startMusic() {
-                if (this.sound && this.music) {
+                if (this.music) {
                     if (!this.background_audio)
                         this.background_audio = playAudio('board-background2');
 
