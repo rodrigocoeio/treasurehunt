@@ -147,11 +147,12 @@ td {
 .coin span,
 .treasure span {
     font-size: 20px;
-    color: black;
+    color: gray;
     margin-top: -3px;
     margin-left: -17px;
     font-weight: 900;
-    -webkit-text-stroke: 1px white;
+    -webkit-text-stroke: 1px black;
+    text-shadow:  gray 1px 1px 1px;
     float: left;
     cursor: pointer;
 }
